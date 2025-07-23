@@ -1,2 +1,42 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
+
+@variant dark (&:where(.dark, .dark *));
+
+/* Dark mode base styles */
+html {
+	transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+html.dark {
+	color-scheme: dark;
+}
+
+/* Custom scrollbar for dark mode */
+html.dark ::-webkit-scrollbar {
+	width: 8px;
+}
+
+html.dark ::-webkit-scrollbar-track {
+	background: rgb(31, 41, 55);
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+	background: rgb(75, 85, 99);
+	border-radius: 4px;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+	background: rgb(107, 114, 128);
+}
+
+/* Force ordered list numbering to work properly */
+ol {
+	list-style-type: decimal !important;
+	counter-reset: item !important;
+}
+
+ol li {
+	display: list-item !important;
+	counter-increment: item !important;
+}

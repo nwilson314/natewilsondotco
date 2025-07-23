@@ -1,0 +1,10 @@
+{
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/.git/**": true,
+    "**/static/data/**": true
+  },
+  "files.associations": {
+    "*.md": "markdown"
+  }
+}

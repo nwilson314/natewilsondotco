@@ -4,7 +4,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Personal website built with SvelteKit to showcase projects, host blog posts, and serve as a digital garden. Content is primarily authored in Markdown and rendered as HTML.
+Personal website built with SvelteKit - but this isn't your typical portfolio site. This is a **digital garden** 🌱 that harks back to the good ole internet days (late 90s/early 2000s) where personal sites had character and visiting someone's corner of the internet felt like exploring their actual space.
+
+**Vibe Check:**
+- More "come hang out in my digital living room" than "hire me portfolio"
+- Personality-driven copy over corporate speak
+- Fun, exploratory navigation rather than sterile business cards
+- Early web nostalgia with modern tech underneath
+- Content is authored in Markdown and rendered as HTML
 
 ## Development Commands
 
@@ -14,6 +21,18 @@ Personal website built with SvelteKit to showcase projects, host blog posts, and
 - `npm run preview` - Preview production build
 - `npm run check` - Run TypeScript and Svelte checks
 - `npm run check:watch` - Run checks in watch mode
+
+## Development Workflow
+
+**IMPORTANT:** After making code changes, always verify the project compiles without errors before considering the task complete. Use this command pattern:
+
+```bash
+npm run dev &
+sleep 5
+pkill -f "vite dev"
+```
+
+This starts the dev server in background, waits 5 seconds to catch compilation errors, then kills the process. If there are compilation errors, they will be visible in the output.
 
 ## Architecture
 
@@ -27,13 +46,26 @@ SvelteKit project with TypeScript and Tailwind CSS v4. Uses:
 
 ## Content Structure
 
-- Blog posts and project content authored in Markdown
-- Static content in `static/` directory
-- Shared components in `src/lib/` (accessible via `$lib` alias)
-- Page routes in `src/routes/` following SvelteKit conventions
+- **Digital garden content** in `data/` directory (blogs, projects) authored in Markdown
+- **Static assets** in `static/` directory (images, PDFs, etc.)
+- **Shared components** in `src/lib/` (accessible via `$lib` alias)
+- **Page routes** in `src/routes/` following SvelteKit conventions
+
+## Design Philosophy
+
+When working on this site, keep in mind:
+
+1. **Personality over polish** - A little rough around the edges is fine if it has character
+2. **Conversational tone** - Write like you're talking to a friend, not a hiring manager
+3. **Fun interactions** - Hover effects, subtle animations, playful elements
+4. **Nostalgic touches** - ASCII art, visitor counters, "last updated" timestamps
+5. **Actual content over generic descriptions** - Show real project titles, current interests, etc.
 
 ## Key Files
 
-- `src/routes/+layout.svelte` - Root layout with global CSS imports
+- `src/routes/+page.svelte` - Homepage with digital garden welcome
+- `src/routes/+layout.svelte` - Root layout with global CSS imports  
 - `src/app.css` - Global Tailwind styles
+- `src/lib/utils/markdown.ts` - Content loading utilities
+- `src/lib/utils/markdownRenderer.ts` - Custom markdown to HTML converter
 - TypeScript config extends `.svelte-kit/tsconfig.json`
