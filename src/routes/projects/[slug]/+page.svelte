@@ -8,6 +8,7 @@
 	import { loadProject, type Project } from '$lib/utils/markdown';
 	import { markdownToHtml } from '$lib/utils/markdownRenderer';
 	import { onMount } from 'svelte';
+	import SyntaxHighlighter from '$lib/components/SyntaxHighlighter.svelte';
 
 	let project: Project | null = null;
 	let loading = true;
@@ -118,7 +119,7 @@
 			
 			<!-- Content -->
 			<article class="max-w-none mb-12">
-				{@html markdownToHtml(project.content)}
+				<SyntaxHighlighter content={markdownToHtml(project.content)} />
 			</article>
 			
 			<!-- Tech details at the bottom -->

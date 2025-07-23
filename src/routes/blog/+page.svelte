@@ -39,7 +39,7 @@
 	</div>
 
 	{#if recentPosts.length > 0}
-		<div class="mb-16">
+		<div class="mb-16 bg-blue-50 dark:bg-blue-950/20 border-2 border-dashed border-blue-300 dark:border-blue-700 rounded-lg p-8">
 			<h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-8">📝 Recent Thoughts</h2>
 			<div class="grid md:grid-cols-2 gap-6">
 				{#each recentPosts as post}
@@ -82,7 +82,7 @@
 	{/if}
 
 	{#if featuredSeries.length > 0}
-		<div class="mb-16">
+		<div class="mb-16 bg-purple-50 dark:bg-purple-950/20 border-2 border-dashed border-purple-300 dark:border-purple-700 rounded-lg p-8">
 			<h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-8">📚 Featured Series</h2>
 			<div class="space-y-8">
 				{#each featuredSeries as series}
@@ -140,7 +140,7 @@
 	{/if}
 
 	{#if allPosts.length > 0}
-		<div class="mt-16">
+		<div class="mt-16 bg-green-50 dark:bg-green-950/20 border-2 border-dashed border-green-300 dark:border-green-700 rounded-lg p-8">
 			<h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-8">📋 All Posts</h2>
 			<div class="space-y-4">
 				{#each allPosts as post}

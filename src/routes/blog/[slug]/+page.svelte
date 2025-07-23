@@ -7,6 +7,7 @@
 	import { page } from '$app/stores';
 	import { loadBlogPost, loadAllBlogPosts, getSeriesNavigation, type BlogPost } from '$lib/utils/markdown';
 	import { markdownToHtml } from '$lib/utils/markdownRenderer';
+	import SyntaxHighlighter from '$lib/components/SyntaxHighlighter.svelte';
 
 	let post: BlogPost | null = null;
 	let allBlogs: BlogPost[] = [];
@@ -147,7 +148,7 @@
 			
 			<!-- Content -->
 			<article class="max-w-none">
-				{@html markdownToHtml(post.content)}
+				<SyntaxHighlighter content={markdownToHtml(post.content)} />
 			</article>
 			
 			<!-- Series Navigation Footer -->

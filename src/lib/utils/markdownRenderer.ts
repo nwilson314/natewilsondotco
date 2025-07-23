@@ -11,8 +11,43 @@ export function markdownToHtml(markdown: string): string {
 			.trim();
 	}
 
-	// Headers with dark mode classes and anchor IDs (reduced spacing)
-	// Add newlines after headers to ensure proper paragraph separation
+	// Step 1: Extract and protect code blocks and inline code
+	const codeBlocks: string[] = [];
+	const inlineCodes: string[] = [];
+	
+	// Extract fenced code blocks with language support
+	html = html.replace(/```(\w+)?\n?([\s\S]*?)```/g, (match, lang, code) => {
+		const index = codeBlocks.length;
+		const languageClass = lang ? ` language-${lang}` : '';
+		// Escape HTML entities in code
+		const escapedCode = code.trim()
+			.replace(/&/g, '&amp;')
+			.replace(/</g, '&lt;')
+			.replace(/>/g, '&gt;')
+			.replace(/"/g, '&quot;')
+			.replace(/'/g, '&#39;');
+		// Use Prism.js compatible structure with fallback styling
+		codeBlocks.push(`<pre class="language-${lang || 'text'} rounded-lg p-4 overflow-x-auto my-6 bg-gray-100 dark:bg-gray-800"><code class="${languageClass} text-sm">${escapedCode}</code></pre>`);
+		return `__CODE_BLOCK_${index}__`;
+	});
+	
+	// Extract inline code
+	html = html.replace(/`([^`]+)`/g, (match, code) => {
+		const index = inlineCodes.length;
+		// Escape HTML entities in inline code
+		const escapedCode = code
+			.replace(/&/g, '&amp;')
+			.replace(/</g, '&lt;')
+			.replace(/>/g, '&gt;')
+			.replace(/"/g, '&quot;')
+			.replace(/'/g, '&#39;');
+		inlineCodes.push(`<code class="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded text-sm">${escapedCode}</code>`);
+		return `__INLINE_CODE_${index}__`;
+	});
+
+	// Step 2: Process other markdown syntax (now safe from code interference)
+	
+	// Headers with dark mode classes and anchor IDs
 	html = html.replace(/^### (.*$)/gm, (match, headerText) => {
 		const id = createAnchorId(headerText);
 		return `<h3 id="${id}" class="text-xl font-semibold text-gray-900 dark:text-white mb-3 mt-6">${headerText}</h3>\n`;
@@ -25,12 +60,6 @@ export function markdownToHtml(markdown: string): string {
 		const id = createAnchorId(headerText);
 		return `<h1 id="${id}" class="text-3xl font-bold text-gray-900 dark:text-white mb-4 mt-8">${headerText}</h1>\n`;
 	});
-
-	// Code blocks first (to avoid conflicts with other patterns)
-	html = html.replace(/```([\s\S]*?)```/g, '<pre class="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 overflow-x-auto my-6"><code class="text-sm text-gray-800 dark:text-gray-200">$1</code></pre>');
-	
-	// Inline code with dark mode
-	html = html.replace(/`([^`]*)`/g, '<code class="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded text-sm">$1</code>');
 
 	// Images (process before links to avoid conflicts)
 	html = html.replace(/!\[([^\]]*)\]\(([^)]*)\)/g, (match, altText, imageUrl) => {
@@ -156,6 +185,15 @@ export function markdownToHtml(markdown: string): string {
 		})
 		.filter(p => p)
 		.join('\n');
+
+	// Step 3: Restore protected code blocks and inline code
+	html = html.replace(/__CODE_BLOCK_(\d+)__/g, (match, index) => {
+		return codeBlocks[parseInt(index)] || match;
+	});
+	
+	html = html.replace(/__INLINE_CODE_(\d+)__/g, (match, index) => {
+		return inlineCodes[parseInt(index)] || match;
+	});
 
 	return html;
 }
