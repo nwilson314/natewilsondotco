@@ -4,7 +4,7 @@
 	const socialLinks = [
 		{ href: 'https://github.com/nwilson314', label: 'GitHub', icon: 'github' },
 		{ href: 'https://linkedin.com/in/natewilson2', label: 'LinkedIn', icon: 'linkedin' },
-		{ href: 'https://twitter.com/natewilson', label: 'Twitter', icon: 'twitter' }
+		{ href: 'https://twitter.com/auragen_dev', label: 'Twitter', icon: 'twitter' }
 	];
 </script>
 

@@ -9,6 +9,16 @@
 		{ href: '/blog', label: 'Blog' },
 		{ href: '/contact', label: 'Contact' }
 	];
+	
+	let mobileMenuOpen = false;
+	
+	function toggleMobileMenu() {
+		mobileMenuOpen = !mobileMenuOpen;
+	}
+	
+	function closeMobileMenu() {
+		mobileMenuOpen = false;
+	}
 </script>
 
 <header class="border-b border-gray-200 dark:border-gray-700 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50">
@@ -43,15 +53,41 @@
 				<div class="md:hidden">
 					<button 
 						type="button"
+						onclick={toggleMobileMenu}
 						class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors p-2"
-						aria-label="Open menu"
+						aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
 					>
-						<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-						</svg>
+						{#if mobileMenuOpen}
+							<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+							</svg>
+						{:else}
+							<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+							</svg>
+						{/if}
 					</button>
 				</div>
 			</div>
 		</div>
+		
+		<!-- Mobile menu -->
+		{#if mobileMenuOpen}
+			<div class="md:hidden border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+				<nav class="px-4 py-4 space-y-3">
+					{#each navItems as item}
+						<a 
+							href={item.href}
+							onclick={closeMobileMenu}
+							class="block text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors py-2 {
+								$page.url.pathname === item.href ? 'text-gray-900 dark:text-white font-medium' : ''
+							}"
+						>
+							{item.label}
+						</a>
+					{/each}
+				</nav>
+			</div>
+		{/if}
 	</div>
 </header>
