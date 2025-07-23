@@ -30,7 +30,7 @@
 	</div>
 
 	{#if featuredProjects.length > 0}
-		<div class="mb-16">
+		<div class="mb-16 bg-blue-50 dark:bg-blue-950/20 border-2 border-dashed border-blue-300 dark:border-blue-700 rounded-lg p-8">
 			<h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-8">⭐ Actually Proud Of These</h2>
 			<div class="grid md:grid-cols-2 gap-8">
 				{#each featuredProjects as project}
@@ -111,7 +111,7 @@
 	{/if}
 
 	{#if inProgressProjects.length > 0}
-		<div class="mb-16">
+		<div class="mb-16 bg-orange-50 dark:bg-orange-950/20 border-2 border-dashed border-orange-300 dark:border-orange-700 rounded-lg p-8">
 			<h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-8">🚧 Currently Cooking</h2>
 			<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 				{#each inProgressProjects as project}
@@ -190,7 +190,7 @@
 	{/if}
 
 	{#if otherProjects.length > 0}
-		<div>
+		<div class="bg-green-50 dark:bg-green-950/20 border-2 border-dashed border-green-300 dark:border-green-700 rounded-lg p-8">
 			<h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-8">🧪 Experiments & Side Quests</h2>
 			<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 				{#each otherProjects as project}

@@ -116,32 +116,26 @@
 				</div>
 			</div>
 			
-			<!-- Technologies -->
-			<div class="mb-8">
-				<h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Technologies Used</h2>
-				<div class="flex flex-wrap gap-2">
-					{#each project.technologies as tech}
-						<span class="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg">{tech}</span>
-					{/each}
-				</div>
-			</div>
-			
-			<!-- Tags -->
-			{#if project.tags.length > 0}
-				<div class="mb-8">
-					<h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Tags</h2>
-					<div class="flex flex-wrap gap-2">
-						{#each project.tags as tag}
-							<span class="px-2 py-1 text-sm bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded">{tag}</span>
-						{/each}
-					</div>
-				</div>
-			{/if}
-			
 			<!-- Content -->
 			<article class="max-w-none mb-12">
 				{@html markdownToHtml(project.content)}
 			</article>
+			
+			<!-- Tech details at the bottom -->
+			<div class="mt-12 pt-6 border-t border-gray-200 dark:border-gray-700">
+				<div class="flex flex-wrap items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
+					<span class="font-medium">Built with:</span>
+					{#each project.technologies as tech}
+						<span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded text-xs">{tech}</span>
+					{/each}
+					{#if project.tags.length > 0}
+						<span class="mx-2">•</span>
+						{#each project.tags as tag}
+							<span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded text-xs">{tag}</span>
+						{/each}
+					{/if}
+				</div>
+			</div>
 			
 			<!-- Footer -->
 			<div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">

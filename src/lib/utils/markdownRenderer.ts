@@ -36,7 +36,8 @@ export function markdownToHtml(markdown: string): string {
 	html = html.replace(/!\[([^\]]*)\]\(([^)]*)\)/g, (match, altText, imageUrl) => {
 		// Check if it's a relative path (local image)
 		if (!imageUrl.startsWith('http://') && !imageUrl.startsWith('https://') && !imageUrl.startsWith('/')) {
-			imageUrl = `/images/${imageUrl}`;
+			// For project pages, try projects folder first, then fallback to general images
+			imageUrl = `/images/projects/${imageUrl}`;
 		}
 		
 		return `<div class="my-6">
