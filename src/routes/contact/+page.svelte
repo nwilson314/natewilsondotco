@@ -1,6 +1,6 @@
 <svelte:head>
-	<title>Contact - Nate Wilson</title>
-	<meta name="description" content="Get in touch with Nate Wilson for collaborations, opportunities, or just to say hello." />
+	<title>Drop Me a Line - Nate Wilson</title>
+	<meta name="description" content="Want to chat about code, farm life, weird project ideas, or just say hello? I'm always up for a good conversation." />
 </svelte:head>
 
 <script lang="ts">
@@ -33,29 +33,29 @@
 
 	const contactMethods = [
 		{
-			title: 'Email',
-			description: 'Best for detailed discussions and project inquiries',
+			title: '📧 Email',
+			description: 'Best for detailed discussions, weird project ideas, or sharing random thoughts',
 			value: 'nsw.wilson@gmail.com',
 			href: 'mailto:nsw.wilson@gmail.com',
 			icon: 'email'
 		},
 		{
-			title: 'LinkedIn',
-			description: 'Professional networking and career opportunities',
+			title: '💼 LinkedIn',
+			description: 'Professional networking and "I saw your profile and..." messages',
 			value: 'linkedin.com/in/natewilson2',
 			href: 'https://linkedin.com/in/natewilson2',
 			icon: 'linkedin'
 		},
 		{
-			title: 'GitHub',
-			description: 'Code collaboration and open source projects',
+			title: '🐙 GitHub',
+			description: 'Code collaboration, open source contributions, and judging my commit messages',
 			value: 'github.com/nwilson314',
 			href: 'https://github.com/nwilson314',
 			icon: 'github'
 		},
 		{
-			title: 'Resume',
-			description: 'Download my full resume as PDF',
+			title: '📄 Resume',
+			description: 'The official version of "here\'s what I\'ve been up to"',
 			value: 'Download Resume',
 			href: '/Nate_Wilson_Resume_2025.pdf',
 			icon: 'resume'
@@ -65,31 +65,42 @@
 
 <div class="py-12">
 	<div class="max-w-4xl mx-auto">
-		<div class="text-center mb-12">
-			<h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Get in Touch</h1>
-			<p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-				I'd love to hear from you! Whether you want to collaborate on a project, 
-				discuss opportunities, or just say hello, feel free to reach out.
+		<!-- Header with digital garden vibes -->
+		<div class="mb-12">
+			<div class="border-2 border-dashed border-green-300 dark:border-green-700 rounded-lg p-6 bg-green-50 dark:bg-green-950/20 mb-8">
+				<h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+					📬 Let's Chat!
+				</h1>
+				<p class="text-lg text-gray-600 dark:text-gray-300 mb-1">
+					Always up for talking about code, farm life, triathlon training, weird project ideas, or why Oathbringer is the best Stormlight book
+				</p>
+				<p class="text-sm text-gray-500 dark:text-gray-400">
+					Response time: Usually pretty quick unless I'm debugging something cursed • Status: Inbox open
+				</p>
+			</div>
+			
+			<p class="text-xl text-gray-600 dark:text-gray-300 mb-8 text-center">
+				Drop me a line about literally anything - I promise I don't bite (much).
 			</p>
 		</div>
 
 		<div class="grid lg:grid-cols-2 gap-12">
 			<!-- Contact Form -->
-			<div class="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-8">
-				<h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-6">Send a Message</h2>
+			<div class="bg-blue-50 dark:bg-blue-950/20 border-2 border-dashed border-blue-300 dark:border-blue-700 rounded-lg p-8">
+				<h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-6 border-b-2 border-blue-300 dark:border-blue-700 pb-2">💌 Drop Me a Message</h2>
 				
 				{#if submitStatus === 'success'}
-					<div class="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4 mb-6">
+					<div class="bg-green-50 dark:bg-green-900/20 border-2 border-dashed border-green-300 dark:border-green-700 rounded-lg p-4 mb-6">
 						<p class="text-green-800 dark:text-green-200">
-							Thanks for your message! I'll get back to you as soon as possible.
+							🎉 Message received! I'll get back to you soon (probably while procrastinating on something else).
 						</p>
 					</div>
 				{/if}
 
 				{#if submitStatus === 'error'}
-					<div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4 mb-6">
+					<div class="bg-red-50 dark:bg-red-900/20 border-2 border-dashed border-red-300 dark:border-red-700 rounded-lg p-4 mb-6">
 						<p class="text-red-800 dark:text-red-200">
-							Sorry, there was an error sending your message. Please try again or contact me directly.
+							😅 Oops, something went wrong! The form gremlins are at it again. Try emailing me directly instead.
 						</p>
 					</div>
 				{/if}
@@ -106,7 +117,7 @@
 								bind:value={formData.name}
 								required
 								disabled={isSubmitting}
-								class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-50 dark:disabled:bg-gray-700"
+								class="w-full px-3 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-50 dark:disabled:bg-gray-700"
 								placeholder="Your name"
 							>
 						</div>
@@ -120,7 +131,7 @@
 								bind:value={formData.email}
 								required
 								disabled={isSubmitting}
-								class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-50 dark:disabled:bg-gray-700"
+								class="w-full px-3 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-50 dark:disabled:bg-gray-700"
 								placeholder="your.email@example.com"
 							>
 						</div>
@@ -172,8 +183,8 @@
 
 			<!-- Contact Information -->
 			<div class="space-y-8">
-				<div>
-					<h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-6">Other Ways to Connect</h2>
+				<div class="bg-purple-50 dark:bg-purple-950/20 border-2 border-dashed border-purple-300 dark:border-purple-700 rounded-lg p-6">
+					<h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-6 border-b-2 border-purple-300 dark:border-purple-700 pb-2">🤝 Other Ways to Find Me</h2>
 					<div class="space-y-6">
 						{#each contactMethods as method}
 							<div class="flex items-start space-x-4">
@@ -212,25 +223,33 @@
 					</div>
 				</div>
 
-				<div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
-					<h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Response Time</h3>
+				<div class="bg-orange-50 dark:bg-orange-950/20 border-2 border-dashed border-orange-300 dark:border-orange-700 rounded-lg p-6">
+					<h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3 border-b-2 border-orange-300 dark:border-orange-700 pb-1">⏱️ Response Time</h3>
 					<p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
-						I typically respond to messages within 24-48 hours. For urgent matters, 
-						please mention it in your subject line or reach out via LinkedIn for faster response.
+						Usually within 24-48 hours, unless I'm deep in a debugging rabbit hole or the chickens have escaped again. 
+						For urgent stuff, mention it in your subject line or hit me up on LinkedIn.
 					</p>
 				</div>
 
-				<div class="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-6">
-					<h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">What I'm Looking For</h3>
+				<div class="bg-green-50 dark:bg-green-950/20 border-2 border-dashed border-green-300 dark:border-green-700 rounded-lg p-6">
+					<h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3 border-b-2 border-green-300 dark:border-green-700 pb-1">🎯 What I'm Into</h3>
 					<ul class="text-gray-700 dark:text-gray-300 text-sm space-y-2">
-						<li>• Interesting project collaborations</li>
-						<li>• Open source contributions</li>
-						<li>• Speaking opportunities</li>
-						<li>• Mentoring and learning exchanges</li>
-						<li>• Just saying hello!</li>
+						<li>• Weird project collaborations (the weirder, the better)</li>
+						<li>• Open source adventures</li>
+						<li>• Speaking opportunities (I promise I'm not boring)</li>
+						<li>• Mentoring exchanges and learning random stuff</li>
+						<li>• Discussing why Sanderson is the GOAT</li>
+						<li>• Just saying hello (seriously, I like meeting people!)</li>
 					</ul>
 				</div>
 			</div>
+		</div>
+		
+		<!-- ASCII art footer -->
+		<div class="mt-16 text-center">
+			<pre class="text-xs text-gray-400 dark:text-gray-600 font-mono leading-tight">╔══════════════════════════════════════════╗
+║     Don't be a stranger, say hello! 👋    ║
+╚══════════════════════════════════════════╝</pre>
 		</div>
 	</div>
 </div>
