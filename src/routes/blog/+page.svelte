@@ -44,16 +44,18 @@
 			<div class="grid md:grid-cols-2 gap-6">
 				{#each recentPosts as post}
 					<article class="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6 hover:shadow-md transition-shadow">
-						<div class="flex items-center justify-between mb-3 text-sm text-gray-500 dark:text-gray-400">
-							<time datetime={post.date}>{formatDate(post.date)}</time>
-							<span>{post.readTime}</span>
+						<div class="border-b-2 border-blue-300 dark:border-blue-700 pb-2 mb-4">
+							<div class="flex items-center justify-between mb-2 text-sm text-gray-500 dark:text-gray-400">
+								<time datetime={post.date}>{formatDate(post.date)}</time>
+								<span>{post.readTime}</span>
+							</div>
+							
+							<h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+								<a href="/blog/{post.id}" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+									{post.title}
+								</a>
+							</h3>
 						</div>
-						
-						<h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">
-							<a href="/blog/{post.id}" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-								{post.title}
-							</a>
-						</h3>
 						
 						<p class="text-gray-600 dark:text-gray-300 mb-4 text-sm leading-relaxed">{post.excerpt}</p>
 						
@@ -88,26 +90,28 @@
 				{#each featuredSeries as series}
 					<article class="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-lg transition-shadow">
 						<div class="p-8">
-							<div class="flex items-center justify-between mb-4">
-								<div class="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
-									<time datetime={series.latestPost.date}>{formatDate(series.latestPost.date)}</time>
-									<span>•</span>
-									<span>{series.totalPosts} {series.totalPosts === 1 ? 'post' : 'posts'}</span>
-									<span>•</span>
-									<span class="px-2 py-1 text-xs bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded font-medium">Series</span>
+							<div class="border-b-2 border-purple-300 dark:border-purple-700 pb-2 mb-4">
+								<div class="flex items-center justify-between mb-2">
+									<div class="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
+										<time datetime={series.latestPost.date}>{formatDate(series.latestPost.date)}</time>
+										<span>•</span>
+										<span>{series.totalPosts} {series.totalPosts === 1 ? 'post' : 'posts'}</span>
+										<span>•</span>
+										<span class="px-2 py-1 text-xs bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded font-medium">Series</span>
+									</div>
+									<div class="flex flex-wrap gap-2">
+										{#each series.latestPost.tags as tag}
+											<span class="px-2 py-1 text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded">{tag}</span>
+										{/each}
+									</div>
 								</div>
-								<div class="flex flex-wrap gap-2">
-									{#each series.latestPost.tags as tag}
-										<span class="px-2 py-1 text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded">{tag}</span>
-									{/each}
-								</div>
+								
+								<h3 class="text-2xl font-semibold text-gray-900 dark:text-white">
+									<a href="/blog/series/{series.name.toLowerCase().replace(/\s+/g, '-')}" class="hover:text-blue-600 transition-colors">
+										{series.name}
+									</a>
+								</h3>
 							</div>
-							
-							<h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-								<a href="/blog/series/{series.name.toLowerCase().replace(/\s+/g, '-')}" class="hover:text-blue-600 transition-colors">
-									{series.name}
-								</a>
-							</h3>
 							
 							<p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
 								{series.description || series.firstPost.excerpt}
@@ -147,17 +151,19 @@
 					<article class="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4 hover:shadow-md transition-shadow">
 						<div class="flex items-center justify-between">
 							<div class="flex-1">
-								<div class="flex items-center gap-4 mb-2">
-									<h3 class="text-lg font-medium text-gray-900 dark:text-white">
-										<a href="/blog/{post.id}" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-											{post.title}
-										</a>
-									</h3>
-									{#if post.series}
-										<span class="px-2 py-1 text-xs bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded font-medium">
-											{post.series} #{post.series_part || 1}
-										</span>
-									{/if}
+								<div class="border-b-2 border-green-300 dark:border-green-700 pb-1 mb-2">
+									<div class="flex items-center gap-4">
+										<h3 class="text-lg font-medium text-gray-900 dark:text-white">
+											<a href="/blog/{post.id}" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+												{post.title}
+											</a>
+										</h3>
+										{#if post.series}
+											<span class="px-2 py-1 text-xs bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded font-medium">
+												{post.series} #{post.series_part || 1}
+											</span>
+										{/if}
+									</div>
 								</div>
 								<p class="text-sm text-gray-600 dark:text-gray-300 mb-2">{post.excerpt}</p>
 								<div class="flex items-center space-x-4 text-xs text-gray-500 dark:text-gray-400">

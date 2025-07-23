@@ -3,7 +3,7 @@ title: "Personal Website & Digital Garden"
 excerpt: "My throwback digital garden built with SvelteKit - featuring blog series, project showcases, and way too much personality for a portfolio site."
 date: "2025-07-16"
 tags: ["SvelteKit","TypeScript","Tailwind CSS","Digital Garden","Web Development"]
-featured: true
+featured: false
 status: "in-progress"
 github: "https://github.com/nwilson314/natewilsondotco"
 demo: "https://natewilson.co"

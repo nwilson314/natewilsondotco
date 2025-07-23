@@ -47,21 +47,25 @@
 							/>
 						</div>
 						<div class="p-6">
-							<div class="flex items-start justify-between mb-4">
-								<h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-									<a href="/projects/{project.id}" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-										{project.title}
-									</a>
-								</h3>
-								<div class="flex items-center space-x-2">
-									<span class="px-2 py-1 text-xs font-medium rounded-full whitespace-nowrap {
-										project.status === 'completed' ? 'bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200' :
-										project.status === 'in-progress' ? 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200' :
-										'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200'
-									}">
-										{project.status === 'in-progress' ? 'Active' : 
-										 project.status === 'completed' ? 'Completed' : 'Planned'}
-									</span>
+							<div class="border-b-2 border-blue-300 dark:border-blue-700 pb-2 mb-4">
+								<div class="flex items-start justify-between">
+									<h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+										<a href="/projects/{project.id}" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+											{project.title}
+										</a>
+									</h3>
+									<div class="flex items-center space-x-2">
+										<span class="px-2 py-1 text-xs font-medium rounded-full whitespace-nowrap {
+											project.status === 'completed' ? 'bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200' :
+											project.status === 'in-progress' ? 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200' :
+											project.status === 'paused' ? 'bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200' :
+											'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200'
+										}">
+											{project.status === 'in-progress' ? 'Active' : 
+											 project.status === 'completed' ? 'Completed' :
+											 project.status === 'paused' ? 'Paused' : 'Planned'}
+										</span>
+									</div>
 								</div>
 							</div>
 							
@@ -113,7 +117,7 @@
 	{#if inProgressProjects.length > 0}
 		<div class="mb-16 bg-orange-50 dark:bg-orange-950/20 border-2 border-dashed border-orange-300 dark:border-orange-700 rounded-lg p-8">
 			<h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-8">🚧 Currently Cooking</h2>
-			<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+			<div class="grid md:grid-cols-2 gap-6">
 				{#each inProgressProjects as project}
 					<div class="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-md transition-shadow">
 						<div class="aspect-video overflow-hidden">
@@ -128,20 +132,24 @@
 							/>
 						</div>
 						<div class="p-6">
-							<div class="flex items-start justify-between mb-3">
-								<h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-									<a href="/projects/{project.id}" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-										{project.title}
-									</a>
-								</h3>
-								<span class="px-2 py-1 text-xs font-medium rounded-full whitespace-nowrap {
-									project.status === 'completed' ? 'bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200' :
-									project.status === 'in-progress' ? 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200' :
-									'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200'
-								}">
-									{project.status === 'in-progress' ? 'Active' : 
-									 project.status === 'completed' ? 'Completed' : 'Planned'}
-								</span>
+							<div class="border-b-2 border-orange-300 dark:border-orange-700 pb-2 mb-3">
+								<div class="flex items-start justify-between">
+									<h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+										<a href="/projects/{project.id}" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+											{project.title}
+										</a>
+									</h3>
+									<span class="px-2 py-1 text-xs font-medium rounded-full whitespace-nowrap {
+										project.status === 'completed' ? 'bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200' :
+										project.status === 'in-progress' ? 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200' :
+										project.status === 'paused' ? 'bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200' :
+										'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200'
+									}">
+										{project.status === 'in-progress' ? 'Active' : 
+										 project.status === 'completed' ? 'Completed' :
+										 project.status === 'paused' ? 'Paused' : 'Planned'}
+									</span>
+								</div>
 							</div>
 						
 						<p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">{project.excerpt}</p>
@@ -207,20 +215,24 @@
 							/>
 						</div>
 						<div class="p-6">
-							<div class="flex items-start justify-between mb-3">
-								<h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-									<a href="/projects/{project.id}" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-										{project.title}
-									</a>
-								</h3>
-								<span class="px-2 py-1 text-xs font-medium rounded-full whitespace-nowrap {
-									project.status === 'completed' ? 'bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200' :
-									project.status === 'in-progress' ? 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200' :
-									'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200'
-								}">
-									{project.status === 'in-progress' ? 'Active' : 
-									 project.status === 'completed' ? 'Completed' : 'Planned'}
-								</span>
+							<div class="border-b-2 border-green-300 dark:border-green-700 pb-2 mb-3">
+								<div class="flex items-start justify-between">
+									<h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+										<a href="/projects/{project.id}" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+											{project.title}
+										</a>
+									</h3>
+									<span class="px-2 py-1 text-xs font-medium rounded-full whitespace-nowrap {
+										project.status === 'completed' ? 'bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200' :
+										project.status === 'in-progress' ? 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200' :
+										project.status === 'paused' ? 'bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200' :
+										'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200'
+									}">
+										{project.status === 'in-progress' ? 'Active' : 
+										 project.status === 'completed' ? 'Completed' :
+										 project.status === 'paused' ? 'Paused' : 'Planned'}
+									</span>
+								</div>
 							</div>
 						
 						<p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">{project.excerpt}</p>

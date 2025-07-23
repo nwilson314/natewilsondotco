@@ -61,6 +61,24 @@ When working on this site, keep in mind:
 4. **Nostalgic touches** - ASCII art, visitor counters, "last updated" timestamps
 5. **Actual content over generic descriptions** - Show real project titles, current interests, etc.
 
+## Content Writing Style
+
+**CRITICAL:** Avoid corporate speak and marketing language. The site has personality, not polish.
+
+- **Be honest about failures** - "This didn't work out" is better than "strategic pivot"
+- **Include real challenges** - AI is repetitive, projects get slow, things break
+- **Use conversational language** - Write like you're explaining to a friend over coffee
+- **Admit when things suck** - "Turns out AI isn't very creative when given completely open prompts"
+- **Include actual technical details** - Show real problems, not sanitized success stories
+- **Be specific about what you learned** - Include the messy, frustrating parts
+
+Examples of good vs bad:
+- ❌ "Leveraged cutting-edge AI to deliver innovative storytelling experiences"
+- ✅ "Turns out AI gets really repetitive when you give it complete creative freedom"
+
+- ❌ "Successfully implemented dynamic content generation"  
+- ✅ "The stories it generates are honestly kind of boring after a while"
+
 ## Key Files
 
 - `src/routes/+page.svelte` - Homepage with digital garden welcome
