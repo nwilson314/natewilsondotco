@@ -149,6 +149,7 @@ async function main() {
   // Generate indices for both source and static directories
   await generateIndex(join(dataDir, 'blogs'), join(staticDir, 'blogs'));
   await generateIndex(join(dataDir, 'projects'), join(staticDir, 'projects'));
+  await generateIndex(join(dataDir, 'games'), join(staticDir, 'games'));
   
   console.log('Done!');
 }

@@ -6,6 +6,7 @@
 		{ href: '/', label: 'Home' },
 		{ href: '/about', label: 'About' },
 		{ href: '/projects', label: 'Projects' },
+		{ href: '/games', label: 'Games' },
 		{ href: '/blog', label: 'Blog' },
 		{ href: '/contact', label: 'Contact' }
 	];

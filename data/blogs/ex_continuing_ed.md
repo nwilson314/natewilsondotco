@@ -11,25 +11,29 @@ readTime: "12 min read"
 ---
 
 ## TL;DR
-I'm stagnant. There, I said it. Mid-30s backend dev feeling the knowledge gaps, so I'm building a year-long self-directed CS curriculum. Project-based learning focused on the fun stuff I never get to touch at work (compilers, AI systems, game programming). Follow along for the ride.
+Feeling like I'm treading water in my Mid-30s as a primarily backend web dev, I'm building a year-long self-directed CS curriculum. It's project-based learning focused on the fun stuff I never get to touch at work (compilers, AI systems, game programming). This post lays out the guts why and how I'm doing it.
 
 # Why Now?
 
 Recently, I have found myself becoming a bit stagnant in my work/career.
 
-The truth is that I am still quite early in my CSE career (despite being in my mid-30s) and while I find my day job to be quite stimulating, it's rather narrow in focus (primarily backend web development). There's this whole AI/gen-AI thing going on (perhaps you've heard of a thing called ChatGPT) that I'm not being exposed to during the course of my day-to-day (other than using it cursorily) due to the fact that my company just doesn't use it... and by exposed I am talking purely from a technical level.
+The truth is that I am still quite early in my CSE journey (despite being in my mid-30s) and while I find my day job to be quite stimulating, it's rather narrow in focus (primarily backend web development, though increasingly fullstack). There's this whole AI/gen-AI thing going on (perhaps you've heard of a thing called ChatGPT) that I'm not being exposed to during the course of my day-to-day (other than using it cursorily... wink, wink) due to the fact that my company just doesn't use it... and by exposed I am talking purely from a technical level.
 
 Secondarily, I just have a lot of things that I'm interested in: some side web app projects/ideas, game programming, compilers/interpreters. I find genuine enjoyment out of programming and thinking through projects.
 
-And none of this is even mentioning that my "hard" CS knowledge gathering has tapered off since obtaining my masters.
+And none of this is even mentioning that my "hard" CS knowledge gathering has tapered off since obtaining my masters. Or the fact that as the world becomes increasingly reliant on AI/LLMs to do their thinking that there's less and less incentive to actually sit down and learn the basics. I'm banking on this being a valuable commodity in the near-ish future.
 
 ## The Plan
 
 So this is how I find myself interested in a self-directed CS course for continuing my education in the field. This way, I can more formalize the random tinkering and half projects that I seem to start and stop on a whim constantly and direct that energy into "bettering myself" (or at least expanding my knowledge domain).
 
-My first observation was that I don't have to go it alone. There are A LOT of resources out there. People are interested in learning, apparently. However, a lot of what was there seemed rather focused on the more traditional CS lecture style and something more akin to a standard university degree. I have this already and I wasn't interested in going back to that, at least fully. 
+My first observation was that I don't have to go it alone. There are A LOT of resources out there. People are (or were) interested in learning, apparently. However, a lot of what was there seemed to fall in one of two camps: more traditional CS university style courses and tutorial hell.
 
-So instead, I have attempted to curate a more project-focused education. It's what I find more interesting, and frankly, what I think people can learn best from. Doing something solidifies understanding in a way that just reading/watching/listening doesn't.
+The CS university style courses (from places like MIT or Stanford and offered through say Coursera) are a nice supplement but hew more toward the standard university degree (for obvious reasons). I have this already and I wasn't interested in going back to that, at least fully. 
+
+The Tutorial Hell version is a lot of what you find every where else. Big promises, typically bad content, and just generally underwhelming. There's some potentially good stuff out there but it's scattered.
+
+So instead, I have attempted to curate my own, more project-focused education that still leans into books/lectures as a supplement. It's what I find more interesting, and frankly, what I think people can learn best from. Read/watch the hard technical knowledge followed by actually doing something solidifies understanding in a way that just reading/watching/listening alone doesn't.
 
 # The Curriculum 
 
@@ -37,7 +41,13 @@ So instead, I have attempted to curate a more project-focused education. It's wh
 
 I went through a few different iterations and false starts. As I mentioned above, there are an enormous (and even overwhelming) amount of resources for teaching yourself computer science. Some better than others. I eventually found the [Teach Yourself Computer Science](https://teachyourselfcs.com/) (TYCS) curriculum and it immediately resonated with me. For one, I realized that because I have had a slightly non-traditional path through CS, I did not receive as much of a formal education in some key CS topics. TYCS, to me, felt like it could fill in those holes while also being relatively straightforward.
 
-Now, that said, I am not going to follow it to the tee. Instead, I'm going to modify the topics slightly and expand to some others that I think are important to learn. My goal here is more "masters" level than undergrad, even if some of the gaps in my knowledge probably are undergraduate level. Additionally, I'm going to tailor the experience to be more project oriented.
+Now, that said, I am not going to follow it to the tee (T, tea?). Instead, I'm going to modify the topics slightly and expand to some others that I think are important to learn. My goal here is more "masters" level than undergrad, even if some of the gaps in my knowledge probably are undergraduate level. Additionally, I'm going to tailor the experience to be more project oriented.
+
+## AI as Learning Partner
+
+AI is your friend in this. I have some high-level ideas about what I want to learn and what topics, but sometimes it's hard for me to structure a "course" out of each topic, including projects. This is where AI can really help give some structure. And probably even more importantly, tailor it to your specific knowledge and/or interests. 
+
+I leaned heavily into AI to curate the course. Starting high level by mapping out each module and its goals which includes, where appropriate, tying modules and their projects together. LLMs have progressed far enough where there's a lot of value to be had here. In particular, the "Deep Research" mode in ChatGPT (there similar features at other companies as well) not only crafts pretty solid week-by-week course material, it also cites a bunch of articles and blogs across the internet it used to build the material. This is awesome for wrangling all of the Tutorial Hell pieces that are maybe actually good.
 
 ## The Topics
 
@@ -77,7 +87,7 @@ I'm going to break this down into some high level topics that are then completed
 - **LLM & AI Systems**
   - Project: Train a small language model from scratch
 
-## Timeline & Reality Check
+## Timeline
 
 As outlined, this curriculum will take about a year part-time. If you're someone that has a lot of free time on your hands, this plan can be done in something like 6 months (and you'll likely hate yourself at the end of it). I'm going to strive for something in the middle, shooting for about a year. I do have something of a life after all (and a day job besides).
 
@@ -87,15 +97,11 @@ So yes, you might feel like waiting 6-12 months to start digging in on ML/AI is 
 
 Honestly, I truly believe that there are so many "engineers" out there that don't know the basics that if you do actually show up with a solid foundation, you're going to seem like a damn wizard.
 
-## AI as Learning Partner
-
-One quick aside: AI is your friend in this. I have some high-level ideas about what I want to learn, what topics, but sometimes it's hard for me to structure a "course" out of each topic, including projects. This is where AI can really help give some structure. And probably even more importantly, tailor it to your specific knowledge and/or interests.
-
 # What's Next
 
-I'm starting with Computer Architecture next week. I'll be documenting everything as I go... the projects I build, the resources I use, the inevitable moments where I realize I understand way less than I thought I did.
+I'm starting with Computer Architecture next week. I'll be documenting everything as I go... the projects I build, the resources I use, and anything that I might come up with.
 
-Follow along on social media for updates, or just check back here occasionally. I'll be posting project demos and lessons learned.
+Follow along on social media for updates, or just check back here occasionally. I'll be posting project demos and lessons learned. I'll also be posting some of curriculum and projects on [github](https://github.com/nwilson314/10x-cont-ed).
 
 Success for me means: building something concrete for each topic that I can point to and say "yeah, I actually understand how this works under the hood." Not just knowing the theory, but having the muscle memory of implementing it myself.
 

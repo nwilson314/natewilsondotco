@@ -41,6 +41,24 @@ export interface Project {
 	images?: string[]; // Gallery images for project details
 }
 
+export interface Game {
+	id: string;
+	title: string;
+	excerpt: string;
+	date: string;
+	updated?: string;
+	tags: string[];
+	featured: boolean;
+	status: 'complete' | 'in-progress' | 'planned';
+	playable: boolean;
+	github?: string;
+	demo?: string;
+	technologies: string[];
+	content: string;
+	image?: string; // Thumbnail image for game cards
+	images?: string[]; // Gallery images for game details
+}
+
 export function parseFrontmatter(content: string): { metadata: Record<string, any>; body: string } {
 	const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
 	const match = content.match(frontmatterRegex);
@@ -264,4 +282,49 @@ export function getSeriesNavigation(blogs: BlogPost[], currentBlog: BlogPost): {
 		next: currentIndex < seriesBlogs.length - 1 ? seriesBlogs[currentIndex + 1] : undefined,
 		seriesBlogs
 	};
+}
+
+// Games-related functions
+export async function loadGame(filename: string): Promise<Game> {
+	const response = await fetch(`/data/games/${filename}.md`);
+	const content = await response.text();
+	const { metadata, body } = parseFrontmatter(content);
+	
+	return {
+		id: filename,
+		title: metadata.title || 'Untitled Game',
+		excerpt: metadata.excerpt || '',
+		date: metadata.date || '',
+		updated: metadata.updated,
+		tags: metadata.tags || [],
+		featured: metadata.featured || false,
+		status: metadata.status || 'planned',
+		playable: metadata.playable || false,
+		github: metadata.github,
+		demo: metadata.demo,
+		technologies: metadata.technologies || [],
+		content: body,
+		image: metadata.image,
+		images: metadata.images
+	};
+}
+
+export async function loadAllGames(): Promise<Game[]> {
+	const gameFiles = await discoverMarkdownFiles('/data/games');
+	
+	// If no files discovered, try known files as fallback
+	const filesToTry = gameFiles.length > 0 ? gameFiles : ['the-last-polygon.md'];
+	
+	const games: Game[] = [];
+	
+	for (const filename of filesToTry) {
+		try {
+			const game = await loadGame(filename.replace('.md', ''));
+			games.push(game);
+		} catch (error) {
+			console.warn(`Failed to load game: ${filename}`, error);
+		}
+	}
+	
+	return games.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
