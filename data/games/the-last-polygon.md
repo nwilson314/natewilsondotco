@@ -8,7 +8,7 @@ status: "in-progress"
 playable: true
 github: ""
 demo: ""
-technologies: ["Odin", "WebGL", "Canvas", "WebAssembly"]
+technologies: ["Odin", "Raylib", "WebAssembly", "Emscripten"]
 image: "the-last-polygon.png"
 ---
 
@@ -40,9 +40,9 @@ The core gameplay loop is classic bullet heaven: enemies spawn, you survive, you
 
 ## Technical Stuff
 
-Built entirely in **Odin** because I wanted to see if I could actually finish a game without fighting Rust's borrow checker for 3 hours. The web build compiles to WebAssembly, which means you can play it in your browser without installing anything.
+Built entirely in **Odin** because I wanted to see if I could actually finish a game without fighting Rust's borrow checker for 3 hours. Uses **Raylib** for the graphics and input handling - it's simple, fast, and doesn't get in the way. The web build compiles to WebAssembly through Emscripten, which means you can play it in your browser without installing anything.
 
-The rendering is all immediate-mode OpenGL calls - no fancy game engine, no complex scene graph, just "draw triangle here, draw circle there" repeated 60 times per second.
+Raylib handles all the rendering with its simple shape-drawing functions - no sprites to load, no textures to manage, just `DrawCircle()`, `DrawTriangle()`, and `DrawRectangle()` called in a loop. It's refreshingly straightforward.
 
 ## Things I Learned
 
