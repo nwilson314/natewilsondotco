@@ -11,8 +11,8 @@ const config = {
 		// Use static adapter for prerendering
 		adapter: adapter({
 			// Generate static files
-			pages: 'build',
-			assets: 'build',
+			pages: 'public',
+			assets: 'public',
 			fallback: 'index.html',
 			precompress: false,
 			strict: false
