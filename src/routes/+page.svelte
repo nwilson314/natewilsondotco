@@ -1,9 +1,10 @@
 <script lang="ts">
-	import { loadAllBlogPosts, loadAllProjects, type BlogPost, type Project } from '$lib/utils/markdown';
+	import type { PageData } from './$types';
 	import { onMount } from 'svelte';
 
-	let posts: BlogPost[] = [];
-	let projects: Project[] = [];
+	export let data: PageData;
+	
+	let { posts, projects } = data;
 	let currentTime = new Date();
 	
 	const randomMessages = [
@@ -22,12 +23,6 @@
 	let randomMessage = randomMessages[Math.floor(Math.random() * randomMessages.length)];
 
 	onMount(() => {
-		async function load() {
-			posts = await loadAllBlogPosts();
-			projects = await loadAllProjects();
-		}
-		load();
-
 		const interval = setInterval(() => {
 			currentTime = new Date();
 		}, 1000);

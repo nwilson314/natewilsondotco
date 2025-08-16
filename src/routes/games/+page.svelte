@@ -1,8 +1,10 @@
 <script lang="ts">
-	import { loadAllGames, type Game } from '$lib/utils/markdown';
+	import type { PageData } from './$types';
 	import { onMount } from 'svelte';
 
-	let games: Game[] = [];
+	export let data: PageData;
+	
+	let { games } = data;
 	let currentTime = new Date();
 	
 	const gameQuips = [
@@ -19,11 +21,6 @@
 	let randomQuip = gameQuips[Math.floor(Math.random() * gameQuips.length)];
 
 	onMount(() => {
-		async function load() {
-			games = await loadAllGames();
-		}
-		load();
-
 		const interval = setInterval(() => {
 			currentTime = new Date();
 		}, 1000);
