@@ -4,42 +4,14 @@
 </svelte:head>
 
 <script lang="ts">
-	import { page } from '$app/stores';
-	import { loadBlogPost, loadAllBlogPosts, getSeriesNavigation, type BlogPost } from '$lib/utils/markdown';
+	import type { PageData } from './$types';
 	import { markdownToHtml } from '$lib/utils/markdownRenderer';
 	import SyntaxHighlighter from '$lib/components/SyntaxHighlighter.svelte';
 
-	let post: BlogPost | null = null;
-	let allBlogs: BlogPost[] = [];
-	let seriesNavigation: { previous?: BlogPost; next?: BlogPost; seriesBlogs: BlogPost[] } = { seriesBlogs: [] };
-	let loading = true;
-	let error: string | null = null;
-
-	// Make this reactive to slug changes
-	$: if ($page.params.slug) {
-		loadPost($page.params.slug);
-	}
-
-	async function loadPost(slug: string) {
-		loading = true;
-		error = null;
-		
-		try {
-			[post, allBlogs] = await Promise.all([
-				loadBlogPost(`${slug}.md`),
-				loadAllBlogPosts()
-			]);
-			
-			if (post) {
-				seriesNavigation = getSeriesNavigation(allBlogs, post);
-			}
-			loading = false;
-		} catch (err) {
-			console.error('Failed to load blog post:', err);
-			error = 'Blog post not found';
-			loading = false;
-		}
-	}
+	export let data: PageData;
+	
+	$: ({ post, allBlogs, seriesNavigation } = data);
+	$: error = !post;
 
 	function formatDate(dateString: string): string {
 		const date = new Date(dateString);
@@ -51,13 +23,7 @@
 	}
 </script>
 
-{#if loading}
-	<div class="py-12">
-		<div class="max-w-3xl mx-auto text-center">
-			<p class="text-gray-600 dark:text-gray-300">Loading...</p>
-		</div>
-	</div>
-{:else if error}
+{#if error}
 	<div class="py-12">
 		<div class="max-w-3xl mx-auto text-center">
 			<h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Post Not Found</h1>

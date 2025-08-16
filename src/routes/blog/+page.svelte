@@ -4,20 +4,15 @@
 </svelte:head>
 
 <script lang="ts">
-	import { loadAllBlogPosts, getFeaturedSeries, getStandalonePosts, type BlogPost, type BlogSeries } from '$lib/utils/markdown';
-	import { onMount } from 'svelte';
-
-	let posts: BlogPost[] = [];
-	let featuredSeries: BlogSeries[] = [];
-	let recentPosts: BlogPost[] = [];
-	let allPosts: BlogPost[] = [];
-
-	onMount(async () => {
-		posts = await loadAllBlogPosts();
-		featuredSeries = getFeaturedSeries(posts);
-		recentPosts = posts.slice(0, 4); // Most recent 4 posts by time
-		allPosts = posts; // All posts, already sorted by date
-	});
+	import type { PageData } from './$types';
+	import { getFeaturedSeries, type BlogPost, type BlogSeries } from '$lib/utils/markdown';
+	
+	export let data: PageData;
+	
+	$: posts = data.posts;
+	$: featuredSeries = getFeaturedSeries(posts);
+	$: recentPosts = posts.slice(0, 4); // Most recent 4 posts by time
+	$: allPosts = posts; // All posts, already sorted by date
 
 	function formatDate(dateString: string): string {
 		const date = new Date(dateString);

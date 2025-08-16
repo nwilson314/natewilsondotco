@@ -70,7 +70,7 @@ export function markdownToHtml(markdown: string): string {
 		}
 		
 		return `<div class="my-6">
-			<img src="${imageUrl}" alt="${altText}" class="rounded-lg shadow-md max-w-full h-auto mx-auto" loading="lazy" />
+			<img src="${imageUrl}" alt="${altText}" class="rounded-lg shadow-md max-w-full h-auto mx-auto border border-gray-200 dark:border-gray-600" loading="lazy" />
 			${altText ? `<p class="text-sm text-gray-600 dark:text-gray-400 text-center mt-2 italic">${altText}</p>` : ''}
 		</div>`;
 	});

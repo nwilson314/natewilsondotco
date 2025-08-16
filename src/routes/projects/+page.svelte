@@ -1,23 +1,15 @@
+<!-- prerender: true -->
 <svelte:head>
 	<title>Stuff I Made - Nate Wilson</title>
 	<meta name="description" content="Things I've built that actually work (mostly). Projects, experiments, and weekend creations." />
 </svelte:head>
 
 <script lang="ts">
-	import { loadAllProjects, type Project } from '$lib/utils/markdown';
-	import { onMount } from 'svelte';
-
-	let projects: Project[] = [];
-	let featuredProjects: Project[] = [];
-	let inProgressProjects: Project[] = [];
-	let otherProjects: Project[] = [];
-
-	onMount(async () => {
-		projects = await loadAllProjects();
-		featuredProjects = projects.filter(p => p.featured);
-		inProgressProjects = projects.filter(p => !p.featured && p.status === 'in-progress');
-		otherProjects = projects.filter(p => !p.featured && p.status !== 'in-progress');
-	});
+	import type { PageData } from './$types';
+	
+	export let data: PageData;
+	
+	$: ({ featuredProjects, inProgressProjects, otherProjects } = data);
 </script>
 
 <div class="py-12">
@@ -39,10 +31,11 @@
 							<img 
 								src="/images/projects/{project.image || 'project_placeholder.png'}" 
 								alt="{project.title} screenshot"
-								class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+								class="w-full h-full object-cover hover:scale-105 transition-transform duration-300 border border-gray-200 dark:border-gray-600"
 								on:error={(e) => { 
-									if (e.target.src.includes('project_placeholder.png')) return;
-									e.target.src = '/images/projects/project_placeholder.png'; 
+									const target = e.target as HTMLImageElement;
+									if (target.src.includes('project_placeholder.png')) return;
+									target.src = '/images/projects/project_placeholder.png'; 
 								}}
 							/>
 						</div>
@@ -124,10 +117,11 @@
 							<img 
 								src="/images/projects/{project.image || 'project_placeholder.png'}" 
 								alt="{project.title} screenshot"
-								class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+								class="w-full h-full object-cover hover:scale-105 transition-transform duration-300 border border-gray-200 dark:border-gray-600"
 								on:error={(e) => { 
-									if (e.target.src.includes('project_placeholder.png')) return;
-									e.target.src = '/images/projects/project_placeholder.png'; 
+									const target = e.target as HTMLImageElement;
+									if (target.src.includes('project_placeholder.png')) return;
+									target.src = '/images/projects/project_placeholder.png'; 
 								}}
 							/>
 						</div>
@@ -207,10 +201,11 @@
 							<img 
 								src="/images/projects/{project.image || 'project_placeholder.png'}" 
 								alt="{project.title} screenshot"
-								class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+								class="w-full h-full object-cover hover:scale-105 transition-transform duration-300 border border-gray-200 dark:border-gray-600"
 								on:error={(e) => { 
-									if (e.target.src.includes('project_placeholder.png')) return;
-									e.target.src = '/images/projects/project_placeholder.png'; 
+									const target = e.target as HTMLImageElement;
+									if (target.src.includes('project_placeholder.png')) return;
+									target.src = '/images/projects/project_placeholder.png'; 
 								}}
 							/>
 						</div>

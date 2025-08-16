@@ -8,10 +8,10 @@ status: "paused"
 github: "https://github.com/nwilson314/py-odin-lox"
 demo: ""
 technologies: ["Python","Odin","Language Design","Tree-walk Interpreter"]
-image: "lox-interpreter.png"
-images: ["lox-interpreter.png","lox-code-example.png"]
+image: "project_placeholder.png"
+images: ["project_placeholder.png"]
 readTime: "3 min read"
-updated: "2025-08-09"
+updated: "2025-08-16"
 ---
 
 # PyOdin Lox

@@ -8,8 +8,8 @@ status: "completed"
 github: "https://github.com/nwilson314/interactive-ink"
 demo: "https://interactive-ink.fly.dev"
 technologies: ["Python", "FastAPI", "OpenAI", "DALL-E", "Llama Index", "Fly.io"]
-image: "interactive-ink-demo.png"
-images: ["interactive-ink-demo.png", "interactive-ink-story.png"]
+image: "project_placeholder.png"
+images: ["project_placeholder.png"]
 readTime: "4 min read"
 updated: "2024-07-23"
 ---
