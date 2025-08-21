@@ -4,7 +4,7 @@ excerpt: "Geometric bullet heaven - survive the mathematical carnage! Everything
 date: "2025-01-15"
 tags: ["odin", "gamedev", "bullet-heaven", "geometry", "2d"]
 featured: true
-status: "in-progress"
+status: "complete"
 playable: true
 github: ""
 demo: ""

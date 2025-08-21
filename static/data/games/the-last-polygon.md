@@ -4,14 +4,14 @@ excerpt: "Geometric bullet heaven - survive the mathematical carnage! Everything
 date: "2025-01-15"
 tags: ["odin","gamedev","bullet-heaven","geometry","2d"]
 featured: true
-status: "in-progress"
+status: "complete"
 playable: true
 github: ""
 demo: ""
 technologies: ["Odin","Raylib","WebAssembly","Emscripten"]
 image: "the-last-polygon.png"
 readTime: "2 min read"
-updated: "2025-08-16"
+updated: "2025-08-21"
 ---
 
 # The Last Polygon

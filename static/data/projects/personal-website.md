@@ -11,7 +11,7 @@ technologies: ["SvelteKit 5","TypeScript","Tailwind CSS v4","Markdown","SSR"]
 image: "personal_site_landing.png"
 images: ["personal_site_landing.png"]
 readTime: "3 min read"
-updated: "2025-08-16"
+updated: "2025-08-21"
 ---
 
 # Personal Website & Digital Garden

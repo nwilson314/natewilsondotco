@@ -11,7 +11,7 @@ technologies: ["Python","FastAPI","OpenAI","DALL-E","Llama Index","Fly.io"]
 image: "project_placeholder.png"
 images: ["project_placeholder.png"]
 readTime: "4 min read"
-updated: "2025-08-16"
+updated: "2025-08-21"
 ---
 
 # Interactive Ink

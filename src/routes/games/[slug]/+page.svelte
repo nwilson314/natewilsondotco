@@ -24,110 +24,11 @@
 		}
 	});
 	
-	async function initializeGame(slug: string) {
+	function initializeGame(slug: string) {
 		if (gameInitialized) return;
 		
-		gameLoading = true;
-		
-		// Load Odin runtime first
-		const odinScript = document.createElement('script');
-		odinScript.src = `/games/${slug}/odin.js`;
-		document.body.appendChild(odinScript);
-		
-		await new Promise((resolve) => {
-			odinScript.onload = resolve;
-			odinScript.onerror = () => {
-				console.error('Failed to load Odin runtime');
-				gameLoading = false;
-				resolve(null);
-			};
-		});
-		
-		// Setup Odin memory interface
-		// @ts-ignore
-		const odinMemoryInterface = new window.odin.WasmMemoryInterface();
-		odinMemoryInterface.setIntSize(4);
-		// @ts-ignore
-		const odinImports = window.odin.setupDefaultImports(odinMemoryInterface);
-		
-		// Configure Module for Emscripten
-		// @ts-ignore
-		window.Module = {
-			locateFile: function(path: string) {
-				if (path.endsWith('.data')) {
-					return `/games/${slug}/index.data`;
-				}
-				return `/games/${slug}/${path}`;
-			},
-			instantiateWasm: (imports: any, successCallback: any) => {
-				const newImports = {
-					...odinImports,
-					...imports
-				};
-				
-				return WebAssembly.instantiateStreaming(
-					fetch(`/games/${slug}/index.wasm`), 
-					newImports
-				).then(function(output) {
-					const e = output.instance.exports;
-					odinMemoryInterface.setExports(e);
-					odinMemoryInterface.setMemory(e.memory);
-					return successCallback(output.instance);
-				});
-			},
-			onRuntimeInitialized: () => {
-				// @ts-ignore
-				const e = window.wasmExports;
-				
-				// Initialize the game
-				e._start();
-				e.main_start();
-				
-				function send_resize() {
-					const canvas = document.getElementById('canvas') as HTMLCanvasElement;
-					e.web_window_size_changed(canvas.width, canvas.height);
-				}
-				
-				window.addEventListener('resize', function(event) {
-					send_resize();
-				}, true);
-				
-				send_resize();
-				
-				// Main game loop
-				function do_main_update() {
-					if (!e.main_update()) {
-						e.main_end();
-						e._end();
-						return;
-					}
-					window.requestAnimationFrame(do_main_update);
-				}
-				
-				window.requestAnimationFrame(do_main_update);
-				
-				// Hide loading screen
-				gameLoading = false;
-				gameInitialized = true;
-			},
-			print: function(text: string) {
-				if (arguments.length > 1) {
-					text = Array.prototype.slice.call(arguments).join(' ');
-				}
-				console.log(text);
-			},
-			canvas: document.getElementById('canvas')
-		};
-		
-		// Load the main Emscripten script
-		const script = document.createElement('script');
-		script.src = `/games/${slug}/index.js`;
-		script.async = true;
-		script.onerror = () => {
-			console.error('Failed to load game script');
-			gameLoading = false;
-		};
-		document.body.appendChild(script);
+		gameLoading = false; // No loading needed for iframe
+		gameInitialized = true;
 	}
 </script>
 
@@ -177,28 +78,18 @@
 		{#if game.playable && game.status === 'complete'}
 			<!-- Game Container -->
 			<div class="game-container mb-8 -mx-4 sm:-mx-6 lg:-mx-8">
-				<div class="relative bg-black border-2 border-gray-800 dark:border-gray-600 rounded-lg overflow-hidden mx-4 sm:mx-6 lg:mx-8">
-					<canvas 
-						id="canvas" 
-						class="game-canvas block w-full"
-						width="1920"
-						height="1080"
-					></canvas>
-					
-					{#if gameLoading}
-						<div class="absolute inset-0 flex items-center justify-center bg-black/80">
-							<div class="text-center text-white">
-								<div class="animate-spin text-4xl mb-4">🎮</div>
-								<p class="text-xl">Loading {game.title}...</p>
-								<p class="text-sm mt-2 opacity-75">Preparing the geometric carnage...</p>
-							</div>
-						</div>
-					{/if}
+				<div class="relative border-2 border-gray-800 dark:border-gray-600 rounded-lg overflow-hidden mx-4 sm:mx-6 lg:mx-8">
+					<iframe 
+						src="/games/{game.id}/index.html"
+						class="game-iframe w-full"
+						title="{game.title}"
+						allowfullscreen
+					></iframe>
 				</div>
 				
 				<div class="mt-4 text-center">
 					<p class="text-sm text-gray-500 dark:text-gray-400">
-						Having issues? Try refreshing the page or check your browser's console for errors.
+						Controls: WASD to move, auto-fires at enemies • <a href="/games/{game.id}/index.html" target="_blank" class="text-blue-600 dark:text-blue-400 hover:underline">Open in new tab</a>
 					</p>
 				</div>
 			</div>
@@ -296,29 +187,26 @@
 		max-width: 100vw;
 	}
 	
-	.game-canvas {
+	.game-iframe {
 		background-color: black;
 		width: 100%;
 		height: 60vh;
 		min-height: 500px;
 		max-height: 800px;
-		object-fit: contain;
-		image-rendering: pixelated;
-		image-rendering: -moz-crisp-edges;
-		image-rendering: crisp-edges;
+		border: none;
 	}
 	
-	/* Larger canvas on bigger screens */
+	/* Larger iframe on bigger screens */
 	@media (min-width: 1024px) {
-		.game-canvas {
+		.game-iframe {
 			height: 70vh;
 			max-height: 900px;
 		}
 	}
 	
-	/* Responsive canvas for mobile */
+	/* Responsive iframe for mobile */
 	@media (max-width: 768px) {
-		.game-canvas {
+		.game-iframe {
 			height: 50vh;
 			min-height: 400px;
 		}
