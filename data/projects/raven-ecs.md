@@ -116,11 +116,11 @@ Building a performance-oriented library in Odin taught me a lot about memory lay
 
 The most interesting challenge was designing an API that feels natural to use while maintaining the performance characteristics that make ECS worthwhile in the first place. Sometimes sacrificing a bit of performance for ergonomics is worthwhile. 
 
-Also learned that benchmarking is both crucial and easy to get wrong - spent way too much time optimizing for synthetic workloads that didn't represent real usage patterns (and don't get me started about optimizing builds and how that affects performance).
+Also learned that benchmarking is both crucial and easy to get wrong. I spent way too much time optimizing for synthetic workloads that didn't represent real usage patterns (and don't get me started about optimizing builds and how that affects performance).
 
 ## Current Status
 
-Active development, transitioning from the initial sparse-set implementation to a more sophisticated archetype-based system. The core API is stable, but the internal storage is getting a complete rewrite for better performance.
+Active (though sparse) development. At some point I will be transitioning from the initial sparse-set implementation to a more sophisticated archetype-based system. The core API is stable, but the internal storage will be getting a complete rewrite for better performance.
 
 Next major milestone is chunk-based storage, which should unlock some interesting optimization opportunities while keeping the same user-facing API.
 

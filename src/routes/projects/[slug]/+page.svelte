@@ -1,30 +1,11 @@
-<svelte:head>
-	<title>{project ? `${project.title} - Nate Wilson` : 'Loading...'}</title>
-	<meta name="description" content={project ? project.excerpt : 'Loading project...'} />
-</svelte:head>
-
 <script lang="ts">
-	import { page } from '$app/stores';
-	import { loadProject, type Project } from '$lib/utils/markdown';
+	import type { PageData } from './$types';
 	import { markdownToHtml } from '$lib/utils/markdownRenderer';
-	import { onMount } from 'svelte';
 	import SyntaxHighlighter from '$lib/components/SyntaxHighlighter.svelte';
 
-	let project: Project | null = null;
-	let loading = true;
-	let error: string | null = null;
-
-	onMount(async () => {
-		try {
-			const slug = $page.params.slug;
-			project = await loadProject(`${slug}.md`);
-			loading = false;
-		} catch (err) {
-			console.error('Failed to load project:', err);
-			error = 'Project not found';
-			loading = false;
-		}
-	});
+	export let data: PageData;
+	
+	$: project = data.project;
 
 	function formatDate(dateString: string): string {
 		const date = new Date(dateString);
@@ -36,27 +17,12 @@
 	}
 </script>
 
-{#if loading}
-	<div class="py-12">
-		<div class="max-w-4xl mx-auto text-center">
-			<p class="text-gray-600 dark:text-gray-300">Loading...</p>
-		</div>
-	</div>
-{:else if error}
-	<div class="py-12">
-		<div class="max-w-4xl mx-auto text-center">
-			<h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Project Not Found</h1>
-			<p class="text-gray-600 dark:text-gray-300 mb-8">{error}</p>
-			<a 
-				href="/projects" 
-				class="inline-flex items-center px-6 py-3 bg-blue-600 dark:bg-blue-700 text-white font-medium rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors"
-			>
-				← Back to Projects
-			</a>
-		</div>
-	</div>
-{:else if project}
-	<div class="py-12">
+<svelte:head>
+	<title>{project.title} - Nate Wilson</title>
+	<meta name="description" content={project.excerpt} />
+</svelte:head>
+
+<div class="py-12">
 		<div class="max-w-4xl mx-auto">
 			<!-- Header -->
 			<div class="mb-8">
@@ -162,4 +128,3 @@
 			</div>
 		</div>
 	</div>
-{/if}

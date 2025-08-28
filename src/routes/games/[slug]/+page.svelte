@@ -1,48 +1,17 @@
 <script lang="ts">
-	import { loadGame, type Game } from '$lib/utils/markdown';
-	import { markdownToHtml } from '$lib/utils/markdownRenderer';
-	import { onMount } from 'svelte';
-	import { page } from '$app/stores';
+	import type { PageData } from './$types';
 	
-	let game: Game | null = null;
-	let gameLoading = false;
-	let gameInitialized = false;
+	export let data: PageData;
 	
-	onMount(async () => {
-		const slug = $page.params.slug;
-		const loadedGame = await loadGame(slug);
-		
-		if (loadedGame) {
-			// Convert markdown content to HTML
-			loadedGame.content = markdownToHtml(loadedGame.content);
-			game = loadedGame;
-			
-			// Initialize the game if it's playable
-			if (game.playable && game.status === 'complete') {
-				initializeGame(slug);
-			}
-		}
-	});
-	
-	function initializeGame(slug: string) {
-		if (gameInitialized) return;
-		
-		gameLoading = false; // No loading needed for iframe
-		gameInitialized = true;
-	}
+	$: game = data.game;
 </script>
 
 <svelte:head>
-	{#if game}
-		<title>{game.title} - Nate Wilson</title>
-		<meta name="description" content={game.excerpt} />
-	{:else}
-		<title>Game Loading... - Nate Wilson</title>
-	{/if}
+	<title>{game.title} - Nate Wilson</title>
+	<meta name="description" content={game.excerpt} />
 </svelte:head>
 
-{#if game}
-	<div class="py-8">
+<div class="py-8">
 		<!-- Navigation -->
 		<nav class="mb-8">
 			<a href="/games" class="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline font-medium">
@@ -173,12 +142,4 @@
 			</div>
 		{/if}
 	</div>
-{:else}
-	<div class="py-8">
-		<div class="text-center">
-			<div class="animate-spin text-4xl mb-4">🎮</div>
-			<p class="text-xl text-gray-600 dark:text-gray-300">Loading game...</p>
-		</div>
-	</div>
-{/if}
 
