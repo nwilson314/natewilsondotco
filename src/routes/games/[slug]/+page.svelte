@@ -51,7 +51,7 @@
 				<div class="text-center md:text-left">
 					<h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Play Now</h3>
 					<a 
-						href="/play/{game.id}/index.html" 
+						href="/play/{game.id}/" 
 						target="_blank"
 						class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors"
 					>
