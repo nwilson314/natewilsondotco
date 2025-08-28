@@ -42,7 +42,7 @@
 
 <svelte:head>
 	<title>Games - Nate Wilson</title>
-	<meta name="description" content="A collection of indie games built during my 6-game journey to create a sustainable game studio" />
+	<meta name="description" content="Games I've built while learning game development and experimenting with different ideas" />
 </svelte:head>
 
 <div class="py-8">
@@ -53,10 +53,10 @@
 				🎮 The Game Archive
 			</h1>
 			<p class="text-lg text-gray-600 dark:text-gray-300 mb-1">
-				A 6-game journey to build a sustainable indie game studio (currently at game 1 of 6)
+				Games I've built while learning game development and experimenting with different ideas
 			</p>
 			<p class="text-sm text-gray-500 dark:text-gray-400">
-				Last updated: {formatLastUpdated()} • Games completed: {games.filter(g => g.status === 'complete').length}/6
+				Last updated: {formatLastUpdated()} • Games completed: {games.filter(g => g.status === 'complete').length}
 			</p>
 		</div>
 	</div>

@@ -1,6 +1,6 @@
 ---
 title: "Raven ECS"
-excerpt: "A minimal-yet-extensible Entity-Component-System framework written in Odin, optimized for solo game developers who want performance without complexity."
+excerpt: "A minimal-yet-extensible Entity-Component-(System) framework written in Odin, optimized for solo game developers who want some performance without complexity."
 date: "2025-06-20"
 tags: ["Odin","ECS","Game Development","Systems Programming","Performance"]
 featured: true
@@ -11,22 +11,26 @@ technologies: ["Odin","ECS Architecture","Systems Programming"]
 image: "raven_code_ex.png"
 images: ["raven-ecs-performance.png","raven-ecs-architecture.png"]
 readTime: "4 min read"
-updated: "2025-08-21"
+updated: "2025-08-28"
 ---
 
 # Raven ECS
 
-A specialized Entity-Component-System framework written in Odin, designed for game developers who want performance-oriented architecture without drowning in complexity. The system is (hopefully) easy to understand and use. I wanted something I could build once and use and then optimize as I needed to.
+A specialized Entity-Component-(System) framework written in Odin, designed for game developers who want a decent performance-oriented architecture without drowning in complexity. The system is (hopefully) easy to understand and use. I wanted something I could build once and use and then optimize as I needed to.
+
+## (System)
+
+I should also note that the "S" in ECS is extremely silent in this implementation. There's no actual concept of storing systems in the `ecs.World` struct. It's just a way of quickly accessing via the `query` proc any and all entities that match what your current needs are anywhere in your code.
 
 ## What It Actually Is
 
-Most ECS frameworks are either academic exercises that prioritize theoretical purity or massive enterprise solutions that require a PhD to configure. Raven ECS tries to hit the sweet spot: fast enough for real games, simple enough that you can actually understand what's happening.
+I set out to both explore using **Odin** for a "real" project and to also set myself up for making some small games over a relatively short amount of time. While I understand that an ECS (even one without the concept of systems) might be overkill and would maybe even be [frowned upon by the master GingerBill himself](https://x.com/TheGingerBill/status/1857473296272609451), I typically get some productivity gains by having foundational systems that I don't have to think about while building up other, larger systems. And not to mention it was just kinda fun!
 
-The whole thing is built around the idea that solo game developers (like me) need something that just works without requiring a team of engine programmers to maintain (or understand).
+So yeah, since I don't really know much about proper ECS's (obviously because I didn't even end up building one), this one is probably not great. But it's good enough for now and for what I need.
 
 ## The Performance Story
 
-The main selling point is simplicity. Performance is good - the query iterator averages around 0.16ms for 100,000 entities, which is pretty decent for a framework written by someone who's definitely not a systems programming expert. But the main idea is that you can take this, run with it, and get decent performance if you're just building dumb little side projects.
+The main selling point is simplicity. Performance is good - the query iterator averages around 0.25ms for 100,000 entities, which is pretty decent for a framework written by someone who's definitely not a systems programming expert. But the main idea is that you can take this, run with it, and get decent performance if you're just building dumb little side projects.
 
 **Current approach**: Sparse-set component storage with optimized iterators
 
@@ -40,43 +44,65 @@ The main selling point is simplicity. Performance is good - the query iterator a
 package main
 
 import "core:fmt"
-import ecs "vendor:raven_ecs/src" // Adjust import path as needed
+import ecs "path/to/raven_ecs"
 
-// 1. Define components as simple structs
-Position :: struct {
-	x, y: f32,
-}
-
-Velocity :: struct {
-	dx, dy: f32,
-}
+Transform :: struct { x, y: f32 }
+Velocity :: struct { dx, dy: f32 }
+Renderable :: struct { color: u32 }
 
 main :: proc() {
-	// 2. Create a world
-	world: ecs.World
-	defer ecs.destroy_world(&world) // Handles all cleanup automatically
-
-	// 3. Create component pools. The world will manage their memory.
-	position_pool := ecs.create_component_pool(&world, Position)
-	velocity_pool := ecs.create_component_pool(&world, Velocity)
-
-	// 4. Create an entity and add components
-	player := ecs.make_entity(&world)
-	ecs.add(&world, player, Position{10, 20})
-	ecs.add(&world, player, Velocity{1, 0})
-
-	// 5. Query for entities with both Position and Velocity
-	fmt.println("Moving entities:")
-	it := ecs.query(&world, Position, Velocity)
-	for {
-		entity, ok := ecs.next(&it)
-		if !ok {
-			break
-		}
-		pos := ecs.get(&world, entity, Position)
-		vel := ecs.get(&world, entity, Velocity)
-		fmt.printf("  -> Entity %v is at (%v, %v) with velocity (%v, %v)\n", entity, pos.x, pos.y, vel.dx, vel.dy)
-	}
+    world := ecs.World{}
+    defer ecs.destroy_world(&world)
+    
+    // Setup component pools
+    ecs.create_component_pool(&world, Transform)
+    ecs.create_component_pool(&world, Velocity)
+    ecs.create_component_pool(&world, Renderable)
+    
+    // Spawn entities
+    for i in 0..<1000 {
+        entity := ecs.make_entity(&world)
+        ecs.add(&world, entity, Transform{f32(i), 0})
+        ecs.add(&world, entity, Velocity{1, 1})
+        ecs.add(&world, entity, Renderable{0xFF0000FF})
+    }
+    
+    // Game loop
+    for frame in 0..<60 {
+        // Update physics (now fast by default!)
+        it := ecs.query(&world, Transform, Velocity)
+        for {
+            entity, ok := ecs.next(it)
+            if !ok {
+                ecs.destroy_iterator(it)
+                break
+            }
+            
+            // Use get_from_query for best performance
+            transform, _ := ecs.get_from_query(it, entity, Transform)
+            velocity, _ := ecs.get_from_query(it, entity, Velocity)
+            
+            transform.x += velocity.dx
+            transform.y += velocity.dy
+        }
+        
+        // Render (now fast by default!)
+        render_it := ecs.query(&world, Transform, Renderable)
+        for {
+            entity, ok := ecs.next(render_it)
+            if !ok {
+                ecs.destroy_iterator(render_it)
+                break
+            }
+            
+            transform, _ := ecs.get_from_query(render_it, entity, Transform)
+            renderable, _ := ecs.get_from_query(render_it, entity, Renderable)
+            
+            // Draw entity
+            fmt.printf("Drawing entity %v at (%v, %v) with color %v\n", 
+                      entity, transform.x, transform.y, renderable.color)
+        }
+    }
 }
 ```
 
@@ -85,12 +111,6 @@ The API is deliberately simple - create entities, add components, query for enti
 **Sparse-set storage**: Fast component addition/removal, reasonable iteration performance, predictable memory usage.
 
 **Planned archetype system**: The next major milestone is chunk-based storage that groups entities with similar component compositions into contiguous memory, which should improve cache locality significantly.
-
-## Development Philosophy
-
-Built with a 6-sprint roadmap because I needed structure to actually finish the thing. Each sprint has concrete deliverables and performance targets.
-
-The goal isn't to build the "ultimate" ECS framework - it's to build something that works well for the kinds of games I want to make, with performance characteristics that don't make me cringe.
 
 ## What I Learned
 

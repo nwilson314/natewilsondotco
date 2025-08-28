@@ -11,7 +11,7 @@ technologies: ["Python","Odin","Language Design","Tree-walk Interpreter"]
 image: "project_placeholder.png"
 images: ["project_placeholder.png"]
 readTime: "3 min read"
-updated: "2025-08-21"
+updated: "2025-08-28"
 ---
 
 # PyOdin Lox

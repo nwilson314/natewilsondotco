@@ -76,23 +76,57 @@
 		</div>
 
 		{#if game.playable && game.status === 'complete'}
-			<!-- Game Container -->
-			<div class="game-container mb-8 -mx-4 sm:-mx-6 lg:-mx-8">
-				<div class="relative border-2 border-gray-800 dark:border-gray-600 rounded-lg overflow-hidden mx-4 sm:mx-6 lg:mx-8">
-					<iframe 
-						src="/games/{game.id}/index.html"
-						class="game-iframe w-full"
-						title="{game.title}"
-						allowfullscreen
-					></iframe>
-				</div>
-				
-				<div class="mt-4 text-center">
-					<p class="text-sm text-gray-500 dark:text-gray-400">
-						Controls: WASD to move, auto-fires at enemies • <a href="/games/{game.id}/index.html" target="_blank" class="text-blue-600 dark:text-blue-400 hover:underline">Open in new tab</a>
+			<!-- Top Section with Play Button and Info -->
+			<div class="grid md:grid-cols-3 gap-6 mb-8">
+				<!-- Play Game -->
+				<div class="text-center md:text-left">
+					<h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Play Now</h3>
+					<a 
+						href="/games/{game.id}/index.html" 
+						target="_blank"
+						class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors"
+					>
+						🎮 Play Game
+					</a>
+					<p class="text-sm text-gray-500 dark:text-gray-400 mt-3">
+						Controls: WASD to move<br/>
+						Auto-fires at enemies
 					</p>
 				</div>
+				
+				<!-- Built With -->
+				{#if game.technologies && game.technologies.length > 0}
+					<div>
+						<h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Built With</h3>
+						<div class="flex flex-wrap gap-2">
+							{#each game.technologies as tech}
+								<span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">
+									{tech}
+								</span>
+							{/each}
+						</div>
+					</div>
+				{/if}
+				
+				<!-- Development Info -->
+				{#if game.date}
+					<div>
+						<h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Development Info</h3>
+						<div class="space-y-1 text-sm text-gray-600 dark:text-gray-300">
+							<p>Started: {new Date(game.date).toLocaleDateString()}</p>
+							<p>Status: {game.status.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())}</p>
+							{#if game.playable}
+								<p>Playable: Yes ✅</p>
+							{:else}
+								<p>Playable: Not yet ⏳</p>
+							{/if}
+						</div>
+					</div>
+				{/if}
 			</div>
+			
+			<!-- Divider -->
+			<hr class="border-t border-gray-300 dark:border-gray-700 my-8" />
 		{:else}
 			<!-- Not Playable Message -->
 			<div class="mb-8">
@@ -110,67 +144,34 @@
 			</div>
 		{/if}
 
-		<!-- Game Details -->
-		<div class="grid md:grid-cols-2 gap-8">
-			<!-- Description -->
-			<div>
-				<h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4 border-b-2 border-purple-300 dark:border-purple-700 pb-1">
-					About This Game
-				</h2>
-				<div class="prose prose-gray dark:prose-invert max-w-none">
-					{@html game.content}
-				</div>
-			</div>
-			
-			<!-- Meta Info -->
-			<div class="space-y-6">
-				{#if game.technologies && game.technologies.length > 0}
-					<div>
-						<h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Built With</h3>
-						<div class="flex flex-wrap gap-2">
-							{#each game.technologies as tech}
-								<span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">
-									{tech}
-								</span>
-							{/each}
-						</div>
-					</div>
-				{/if}
-				
-				{#if game.github || game.demo}
-					<div>
-						<h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Links</h3>
-						<div class="space-y-2">
-							{#if game.github}
-								<a href={game.github} class="block text-blue-600 dark:text-blue-400 hover:underline">
-									→ View Source Code
-								</a>
-							{/if}
-							{#if game.demo}
-								<a href={game.demo} class="block text-blue-600 dark:text-blue-400 hover:underline">
-									→ External Demo
-								</a>
-							{/if}
-						</div>
-					</div>
-				{/if}
-				
-				{#if game.date}
-					<div>
-						<h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Development Info</h3>
-						<div class="space-y-1 text-sm text-gray-600 dark:text-gray-300">
-							<p>Started: {new Date(game.date).toLocaleDateString()}</p>
-							<p>Status: {game.status.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())}</p>
-							{#if game.playable}
-								<p>Playable: Yes ✅</p>
-							{:else}
-								<p>Playable: Not yet ⏳</p>
-							{/if}
-						</div>
-					</div>
-				{/if}
+		<!-- Full Width Game Description -->
+		<div>
+			<h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-4 border-b-2 border-purple-300 dark:border-purple-700 pb-1">
+				About This Game
+			</h2>
+			<div class="prose prose-gray dark:prose-invert max-w-none">
+				{@html game.content}
 			</div>
 		</div>
+		
+		<!-- Links section if they exist -->
+		{#if game.github || game.demo}
+			<div class="mt-8">
+				<h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Links</h3>
+				<div class="space-y-2">
+					{#if game.github}
+						<a href={game.github} class="inline-block text-blue-600 dark:text-blue-400 hover:underline">
+							→ View Source Code
+						</a>
+					{/if}
+					{#if game.demo}
+						<a href={game.demo} class="inline-block ml-4 text-blue-600 dark:text-blue-400 hover:underline">
+							→ External Demo
+						</a>
+					{/if}
+				</div>
+			</div>
+		{/if}
 	</div>
 {:else}
 	<div class="py-8">
@@ -181,34 +182,3 @@
 	</div>
 {/if}
 
-<style>
-	.game-container {
-		width: 100%;
-		max-width: 100vw;
-	}
-	
-	.game-iframe {
-		background-color: black;
-		width: 100%;
-		height: 60vh;
-		min-height: 500px;
-		max-height: 800px;
-		border: none;
-	}
-	
-	/* Larger iframe on bigger screens */
-	@media (min-width: 1024px) {
-		.game-iframe {
-			height: 70vh;
-			max-height: 900px;
-		}
-	}
-	
-	/* Responsive iframe for mobile */
-	@media (max-width: 768px) {
-		.game-iframe {
-			height: 50vh;
-			min-height: 400px;
-		}
-	}
-</style>

@@ -8,7 +8,7 @@ series: "Continuing Education"
 series_part: "2"
 series_featured: false
 readTime: "3 min read"
-updated: "2025-08-21"
+updated: "2025-08-28"
 ---
 
 # Computer Architecture: Finally Understanding What's Actually Happening
