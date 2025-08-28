@@ -2,7 +2,14 @@
   "buildCommand": "npm run build",
   "outputDirectory": "public",
   "framework": null,
+  "cleanUrls": true,
   "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/games/:slug/play",
+      "destination": "/games/:slug/index.html"
+    }
+  ],
   "headers": [
     {
       "source": "/_app/(.*)",
