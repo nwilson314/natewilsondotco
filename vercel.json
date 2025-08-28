@@ -4,12 +4,6 @@
   "framework": null,
   "cleanUrls": true,
   "trailingSlash": false,
-  "rewrites": [
-    {
-      "source": "/games/:slug/play",
-      "destination": "/games/:slug/index.html"
-    }
-  ],
   "headers": [
     {
       "source": "/_app/(.*)",
@@ -21,7 +15,7 @@
       ]
     },
     {
-      "source": "/games/(.*)",
+      "source": "/play/(.*)",
       "headers": [
         {
           "key": "Cross-Origin-Embedder-Policy",
