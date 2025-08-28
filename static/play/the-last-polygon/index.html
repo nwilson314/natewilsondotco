@@ -43,7 +43,7 @@
                     ...imports
                 }
 
-                return WebAssembly.instantiateStreaming(fetch("index.wasm"), newImports).then(function(output) {
+                return WebAssembly.instantiateStreaming(fetch("/play/the-last-polygon/index.wasm"), newImports).then(function(output) {
                     var e = output.instance.exports;
                     odinMemoryInterface.setExports(e);
                     odinMemoryInterface.setMemory(e.memory);
