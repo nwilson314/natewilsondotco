@@ -1,17 +1,35 @@
 #!/bin/bash
 
-# Fix paths in the game files after Odin/Emscripten build
-GAME_DIR="static/play/the-last-polygon"
+# Fix paths in all game files after Odin/Emscripten build
+PLAY_DIR="static/play"
 
-echo "Fixing game paths in $GAME_DIR..."
+echo "Fixing game paths in all games..."
 
-# Fix index.html - update wasm fetch to use absolute path
-sed -i.bak 's/fetch("index\.wasm")/fetch("\/play\/the-last-polygon\/index.wasm")/g' "$GAME_DIR/index.html"
+# Loop through all subdirectories in static/play/
+for game_dir in "$PLAY_DIR"/*/; do
+    if [ -d "$game_dir" ]; then
+        game_name=$(basename "$game_dir")
+        echo "Processing game: $game_name"
+        
+        # Fix index.html if it exists
+        if [ -f "$game_dir/index.html" ]; then
+            # Reset any previous fixes first
+            sed -i.bak "s|fetch(\"/play/[^/]*/index\.wasm\")|fetch(\"index.wasm\")|g" "$game_dir/index.html"
+            # Apply new fix
+            sed -i.bak "s/fetch(\"index\.wasm\")/fetch(\"\/play\/$game_name\/index.wasm\")/g" "$game_dir/index.html"
+        fi
+        
+        # Fix index.js if it exists  
+        if [ -f "$game_dir/index.js" ]; then
+            # Reset any previous fixes first
+            sed -i.bak "s|var REMOTE_PACKAGE_BASE = '/play/[^/]*/index\.data';|var REMOTE_PACKAGE_BASE = 'index.data';|g" "$game_dir/index.js"
+            # Apply new fix
+            sed -i.bak "s/var REMOTE_PACKAGE_BASE = 'index\.data';/var REMOTE_PACKAGE_BASE = '\/play\/$game_name\/index.data';/g" "$game_dir/index.js"
+        fi
+        
+        # Remove backup files
+        rm -f "$game_dir"/*.bak
+    fi
+done
 
-# Fix index.js - update data file path to use absolute path
-sed -i.bak "s/var REMOTE_PACKAGE_BASE = 'index\.data';/var REMOTE_PACKAGE_BASE = '\/play\/the-last-polygon\/index.data';/g" "$GAME_DIR/index.js"
-
-# Remove backup files
-rm -f "$GAME_DIR/index.html.bak" "$GAME_DIR/index.js.bak"
-
-echo "Game paths fixed!"
+echo "All game paths fixed!"
