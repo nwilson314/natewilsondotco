@@ -3,10 +3,11 @@ title: "Becoming a Database Expert*"
 excerpt: "* Or at least some version of one."
 date: "2025-12-06"
 tags: ["computer-science", "systems", "learning", "databases"]
-featured: True
+featured: true
 series: "Databases"
 series_part: 1
-series_featured: True
+series_featured: true
+series_description: "A 12-18 month journey to understand database internals, from storage engines to distributed systems."
 readTime: "8 min read"
 ---
 # Becoming a Database Expert*

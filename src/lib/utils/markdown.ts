@@ -11,6 +11,7 @@ export interface BlogPost {
 	series?: string;
 	series_part?: number;
 	series_featured?: boolean;
+	series_description?: string; // Description for the series (used on first post)
 	image?: string; // Featured image for blog posts
 }
 
@@ -124,6 +125,7 @@ export async function loadBlogPost(filename: string): Promise<BlogPost> {
 		series: metadata.series,
 		series_part: metadata.series_part,
 		series_featured: metadata.series_featured || false,
+		series_description: metadata.series_description,
 		image: metadata.image
 	};
 }
@@ -240,6 +242,7 @@ export function createBlogSeries(blogs: BlogPost[]): BlogSeries[] {
 		
 		return {
 			name: seriesName,
+			description: firstPost.series_description,
 			featured,
 			posts: sortedPosts,
 			latestPost,

@@ -27,6 +27,7 @@ export const load: PageServerLoad = async () => {
 				series: metadata.series,
 				series_part: metadata.series_part,
 				series_featured: metadata.series_featured || false,
+				series_description: metadata.series_description,
 				image: metadata.image
 			};
 		});
