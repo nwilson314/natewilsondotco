@@ -3,8 +3,8 @@ title: "Raven ECS"
 excerpt: "A minimal-yet-extensible Entity-Component-(System) framework written in Odin, optimized for solo game developers who want some performance without complexity."
 date: "2025-06-20"
 tags: ["Odin", "ECS", "Game Development", "Systems Programming", "Performance"]
-featured: true
-status: "in-progress"
+featured: false
+status: "paused"
 github: "https://github.com/nwilson314/raven_ecs"
 demo: ""
 technologies: ["Odin", "ECS Architecture", "Systems Programming"]
@@ -14,15 +14,15 @@ images: ["raven-ecs-performance.png", "raven-ecs-architecture.png"]
 
 # Raven ECS
 
-A specialized Entity-Component-(System) framework written in Odin, designed for game developers who want a decent performance-oriented architecture without drowning in complexity. The system is (hopefully) easy to understand and use. I wanted something I could build once and use and then optimize as I needed to.
+A specialized Entity-Component-(System) framework written in Odin, designed for game developers (i.e. me) who want a decent performance-oriented architecture without drowning in complexity. The system is (hopefully) easy to understand and use. I wanted something I could build once and use and then optimize as I needed to.
 
 ## (System)
 
-I should also note that the "S" in ECS is extremely silent in this implementation. There's no actual concept of storing systems in the `ecs.World` struct. It's just a way of quickly accessing via the `query` proc any and all entities that match what your current needs are anywhere in your code.
+I should also note that the "S" in ECS is extremely silent in this implementation. There's no actual concept of storing systems in the `ecs.World` struct. It's just a way of quickly accessing via the `query` proc any and all entities that match what your current needs are anywhere in your code. Which means "systems" are just your procs!
 
 ## What It Actually Is
 
-I set out to both explore using **Odin** for a "real" project and to also set myself up for making some small games over a relatively short amount of time. While I understand that an ECS (even one without the concept of systems) might be overkill and would maybe even be [frowned upon by the master GingerBill himself](https://x.com/TheGingerBill/status/1857473296272609451), I typically get some productivity gains by having foundational systems that I don't have to think about while building up other, larger systems. And not to mention it was just kinda fun!
+I set out to both explore using **Odin** for a "real" project and to also set myself up for making some small games over a relatively short amount of time. While I understand that an ECS (even one without the concept of systems) might be overkill and would maybe even be [frowned upon by the master GingerBill himself](https://x.com/TheGingerBill/status/1857473296272609451), I typically get some productivity gains by having foundational systems that I don't have to think about while building up other, larger systems. And not to mention it was just kinda fun.
 
 So yeah, since I don't really know much about proper ECS's (obviously because I didn't even end up building one), this one is probably not great. But it's good enough for now and for what I need.
 
@@ -32,7 +32,7 @@ The main selling point is simplicity. Performance is good - the query iterator a
 
 **Current approach**: Sparse-set component storage with optimized iterators
 
-**Next evolution**: Transitioning to archetype-based storage with chunk-based memory layout
+**Next evolution**: Transitioning to archetype-based storage with chunk-based memory layout. This probably won't happen and I'm not even sure how to do it, but the internet tells me it is better.
 
 ## Technical Stuff
 
@@ -104,11 +104,11 @@ main :: proc() {
 }
 ```
 
-The API is deliberately simple - create entities, add components, query for entities with specific component combinations. Most of the complexity is hidden in the query optimization.
+The API is deliberately simple. Create entities, add components, query for entities with specific component combinations. Most of the complexity is hidden in the query optimization.
 
 **Sparse-set storage**: Fast component addition/removal, reasonable iteration performance, predictable memory usage.
 
-**Planned archetype system**: The next major milestone is chunk-based storage that groups entities with similar component compositions into contiguous memory, which should improve cache locality significantly.
+**Planned archetype system**: The next major milestone would be chunk-based storage that groups entities with similar component compositions into contiguous memory, which should improve cache locality significantly.
 
 ## What I Learned
 
@@ -120,9 +120,4 @@ Also learned that benchmarking is both crucial and easy to get wrong. I spent wa
 
 ## Current Status
 
-Active (though sparse) development. At some point I will be transitioning from the initial sparse-set implementation to a more sophisticated archetype-based system. The core API is stable, but the internal storage will be getting a complete rewrite for better performance.
-
-Next major milestone is chunk-based storage, which should unlock some interesting optimization opportunities while keeping the same user-facing API.
-
-Perfect for: Small to medium indie games, learning ECS concepts, Odin language projects
-Not great for: AAA studios, developers who need battle-tested stability, anything requiring immediate production readiness
+Paused development. I've found that for what I am doing, it works well enough. There might be some sparse development here and there if I see something, but this is mostly just going on the backburner.

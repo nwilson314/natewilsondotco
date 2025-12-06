@@ -4,6 +4,15 @@
 	export let data: PageData;
 	
 	$: game = data.game;
+
+	function formatDate(dateString: string): string {
+		const date = new Date(dateString);
+		return date.toLocaleDateString('en-US', { 
+			year: 'numeric', 
+			month: 'short', 
+			day: 'numeric' 
+		});
+	}
 </script>
 
 <svelte:head>
@@ -11,135 +20,81 @@
 	<meta name="description" content={game.excerpt} />
 </svelte:head>
 
-<div class="py-8">
-		<!-- Navigation -->
-		<nav class="mb-8">
-			<a href="/games" class="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline font-medium">
-				← Back to Games Archive
-			</a>
-		</nav>
+<div class="py-8 max-w-2xl">
+	<!-- Back link -->
+	<p class="mb-6">
+		<a href="/games">← games</a>
+	</p>
+
+	<!-- Header -->
+	<header class="mb-8">
+		<h1 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+			{game.title}
+		</h1>
 		
-		<!-- Game Header -->
-		<div class="mb-8">
-			<div class="border-2 border-dashed border-purple-300 dark:border-purple-700 rounded-lg p-6 bg-purple-50 dark:bg-purple-950/20">
-				<div class="flex items-center gap-3 mb-3">
-					<span class="text-3xl">🎮</span>
-					<h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
-						{game.title}
-					</h1>
-					{#if game.status === 'complete'}
-						<span class="text-sm px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full">
-							Complete
-						</span>
-					{/if}
-				</div>
-				<p class="text-lg text-gray-600 dark:text-gray-300 mb-3">
-					{game.excerpt}
-				</p>
-				{#if game.playable && game.status === 'complete'}
-					<p class="text-sm text-gray-500 dark:text-gray-400">
-						Controls: WASD to move, auto-fires at enemies • Full screen recommended
-					</p>
-				{/if}
-			</div>
-		</div>
+		<p class="text-gray-600 dark:text-gray-300 mb-4">
+			{game.excerpt}
+		</p>
+		
+		<p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+			{#if game.date}
+				{formatDate(game.date)} ·
+			{/if}
+			{game.status === 'complete' ? 'Complete' : game.status === 'in-progress' ? 'In progress' : 'Planned'}
+			{#if game.playable}
+				· Playable
+			{/if}
+		</p>
 
 		{#if game.playable && game.status === 'complete'}
-			<!-- Top Section with Play Button and Info -->
-			<div class="grid md:grid-cols-3 gap-6 mb-8">
-				<!-- Play Game -->
-				<div class="text-center md:text-left">
-					<h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Play Now</h3>
-					<a 
-						href="/play/{game.id}/" 
-						target="_blank"
-						class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors"
-					>
-						🎮 Play Game
-					</a>
-					<p class="text-sm text-gray-500 dark:text-gray-400 mt-3">
-						Controls: WASD to move<br/>
-						Auto-fires at enemies
-					</p>
-				</div>
-				
-				<!-- Built With -->
-				{#if game.technologies && game.technologies.length > 0}
-					<div>
-						<h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Built With</h3>
-						<div class="flex flex-wrap gap-2">
-							{#each game.technologies as tech}
-								<span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">
-									{tech}
-								</span>
-							{/each}
-						</div>
-					</div>
-				{/if}
-				
-				<!-- Development Info -->
-				{#if game.date}
-					<div>
-						<h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Development Info</h3>
-						<div class="space-y-1 text-sm text-gray-600 dark:text-gray-300">
-							<p>Started: {new Date(game.date).toLocaleDateString()}</p>
-							<p>Status: {game.status.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())}</p>
-							{#if game.playable}
-								<p>Playable: Yes ✅</p>
-							{:else}
-								<p>Playable: Not yet ⏳</p>
-							{/if}
-						</div>
-					</div>
-				{/if}
-			</div>
-			
-			<!-- Divider -->
-			<hr class="border-t border-gray-300 dark:border-gray-700 my-8" />
-		{:else}
-			<!-- Not Playable Message -->
-			<div class="mb-8">
-				<div class="border-2 border-dashed border-orange-300 dark:border-orange-700 rounded-lg p-8 bg-orange-50 dark:bg-orange-950/20 text-center">
-					<span class="text-6xl mb-4 block">🚧</span>
-					<h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-2">
-						{game.status === 'in-progress' ? 'Work in Progress' : 'Coming Eventually™'}
-					</h2>
-					<p class="text-gray-600 dark:text-gray-300">
-						{game.status === 'in-progress' 
-							? 'This game is currently being developed. Check back later for updates!'
-							: 'This game is still in the planning phase. It\'ll happen when it happens.'}
-					</p>
-				</div>
-			</div>
+			<p class="mb-4">
+				<a href="/play/{game.id}/index.html" target="_blank" rel="noopener noreferrer" class="font-medium">Play now →</a>
+			</p>
+			<p class="text-sm text-gray-500 dark:text-gray-400">
+				Controls: WASD to move, auto-fires at enemies
+			</p>
+		{:else if game.status === 'in-progress'}
+			<p class="text-gray-500 dark:text-gray-400 text-sm">
+				This game is currently being developed. Check back later.
+			</p>
+		{:else if game.status === 'planned'}
+			<p class="text-gray-500 dark:text-gray-400 text-sm">
+				This game is still in the planning phase.
+			</p>
 		{/if}
+	</header>
 
-		<!-- Full Width Game Description -->
-		<div>
-			<h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-4 border-b-2 border-purple-300 dark:border-purple-700 pb-1">
-				About This Game
-			</h2>
-			<div class="prose prose-gray dark:prose-invert max-w-none">
-				{@html game.content}
-			</div>
-		</div>
+	<hr class="border-gray-200 dark:border-gray-700 mb-8" />
+
+	<!-- Content -->
+	<article class="prose-custom text-gray-700 dark:text-gray-300">
+		{@html game.content}
+	</article>
+
+	<hr class="border-gray-200 dark:border-gray-700 my-8" />
+
+	<!-- Footer info -->
+	<footer>
+		{#if game.technologies && game.technologies.length > 0}
+			<p class="text-sm text-gray-400 dark:text-gray-500 mb-3">
+				<span class="text-gray-500 dark:text-gray-400 uppercase tracking-wide text-xs">Built with</span><br/>
+				{game.technologies.join(' · ')}
+			</p>
+		{/if}
 		
-		<!-- Links section if they exist -->
 		{#if game.github || game.demo}
-			<div class="mt-8">
-				<h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Links</h3>
-				<div class="space-y-2">
-					{#if game.github}
-						<a href={game.github} class="inline-block text-blue-600 dark:text-blue-400 hover:underline">
-							→ View Source Code
-						</a>
-					{/if}
-					{#if game.demo}
-						<a href={game.demo} class="inline-block ml-4 text-blue-600 dark:text-blue-400 hover:underline">
-							→ External Demo
-						</a>
-					{/if}
-				</div>
-			</div>
+			<p class="text-sm mb-4 space-x-4">
+				{#if game.github}
+					<a href={game.github} target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline">View source</a>
+				{/if}
+				{#if game.demo}
+					<a href={game.demo} target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline">External demo</a>
+				{/if}
+			</p>
 		{/if}
-	</div>
-
+		
+		<p class="mt-8">
+			<a href="/games" class="text-blue-600 dark:text-blue-400 hover:underline">← Back to games</a>
+		</p>
+	</footer>
+</div>

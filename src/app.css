@@ -3,13 +3,54 @@
 
 @variant dark (&:where(.dark, .dark *));
 
-/* Dark mode base styles */
+/* Early web aesthetic - monospace, simple, personal */
+
+/* Import a nice monospace font */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+	--font-mono: 'JetBrains Mono', 'Menlo', 'Monaco', 'Courier New', monospace;
+	--color-accent: #2563eb; /* blue-600 */
+	--color-accent-hover: #1d4ed8; /* blue-700 */
+	--color-muted: #6b7280; /* gray-500 */
+	--color-border: #e5e7eb; /* gray-200 */
+}
+
+html.dark {
+	--color-accent: #60a5fa; /* blue-400 */
+	--color-accent-hover: #93c5fd; /* blue-300 */
+	--color-muted: #9ca3af; /* gray-400 */
+	--color-border: #374151; /* gray-700 */
+	color-scheme: dark;
+}
+
 html {
 	transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-html.dark {
-	color-scheme: dark;
+/* Base typography */
+body {
+	font-family: var(--font-mono);
+	font-size: 14px;
+	line-height: 1.7;
+}
+
+/* Links should look like links */
+a {
+	color: var(--color-accent);
+	text-decoration: underline;
+	text-underline-offset: 2px;
+}
+
+a:hover {
+	color: var(--color-accent-hover);
+}
+
+/* Simple horizontal rules */
+hr {
+	border: none;
+	border-top: 1px solid var(--color-border);
+	margin: 1.5rem 0;
 }
 
 /* Custom scrollbar for dark mode */
@@ -39,4 +80,9 @@ ol {
 ol li {
 	display: list-item !important;
 	counter-increment: item !important;
+}
+
+/* Code blocks inherit the mono font nicely */
+pre, code {
+	font-family: var(--font-mono);
 }

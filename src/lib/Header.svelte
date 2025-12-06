@@ -3,12 +3,11 @@
 	import ThemeToggle from '$lib/ThemeToggle.svelte';
 	
 	const navItems = [
-		{ href: '/', label: 'Home' },
-		{ href: '/about', label: 'About' },
-		{ href: '/projects', label: 'Projects' },
-		{ href: '/games', label: 'Games' },
-		{ href: '/blog', label: 'Blog' },
-		{ href: '/contact', label: 'Contact' }
+		{ href: '/blog', label: 'blog' },
+		{ href: '/projects', label: 'projects' },
+		{ href: '/games', label: 'games' },
+		{ href: '/about', label: 'about' },
+		{ href: '/contact', label: 'contact' }
 	];
 	
 	let mobileMenuOpen = false;
@@ -22,32 +21,29 @@
 	}
 </script>
 
-<header class="border-b border-gray-200 dark:border-gray-700 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50">
+<header class="border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
 	<div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-		<div class="flex items-center justify-between h-16">
-			<div class="flex items-center">
-				<a href="/" class="text-xl font-semibold text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300 transition-colors">
-					Nate Wilson
+		<div class="flex items-center justify-between py-4">
+			<div class="flex items-center gap-8">
+				<a href="/" class="font-semibold text-gray-900 dark:text-white no-underline hover:no-underline">
+					nate wilson
 				</a>
-			</div>
-			
-			<div class="flex items-center space-x-4">
-				<nav class="hidden md:flex space-x-8">
+				
+				<nav class="hidden md:flex gap-6">
 					{#each navItems as item}
 						<a 
 							href={item.href}
-							class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors relative py-2 {
-								$page.url.pathname === item.href ? 'text-gray-900 dark:text-white font-medium' : ''
+							class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white no-underline hover:underline {
+								$page.url.pathname === item.href ? 'text-gray-900 dark:text-white' : ''
 							}"
 						>
 							{item.label}
-							{#if $page.url.pathname === item.href}
-								<div class="absolute bottom-0 left-0 right-0 h-0.5 bg-gray-900 dark:bg-white"></div>
-							{/if}
 						</a>
 					{/each}
 				</nav>
-				
+			</div>
+			
+			<div class="flex items-center gap-4">
 				<ThemeToggle />
 				
 				<!-- Mobile menu button -->
@@ -55,17 +51,13 @@
 					<button 
 						type="button"
 						onclick={toggleMobileMenu}
-						class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors p-2"
+						class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white p-1"
 						aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
 					>
 						{#if mobileMenuOpen}
-							<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-							</svg>
+							<span class="text-lg">×</span>
 						{:else}
-							<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-							</svg>
+							<span class="text-lg">≡</span>
 						{/if}
 					</button>
 				</div>
@@ -74,14 +66,14 @@
 		
 		<!-- Mobile menu -->
 		{#if mobileMenuOpen}
-			<div class="md:hidden border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
-				<nav class="px-4 py-4 space-y-3">
+			<div class="md:hidden border-t border-gray-200 dark:border-gray-700 py-4">
+				<nav class="flex flex-col gap-3">
 					{#each navItems as item}
 						<a 
 							href={item.href}
 							onclick={closeMobileMenu}
-							class="block text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors py-2 {
-								$page.url.pathname === item.href ? 'text-gray-900 dark:text-white font-medium' : ''
+							class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white no-underline hover:underline {
+								$page.url.pathname === item.href ? 'text-gray-900 dark:text-white' : ''
 							}"
 						>
 							{item.label}

@@ -169,7 +169,7 @@ export function markdownToHtml(markdown: string): string {
 		.map(block => {
 			const trimmed = block.trim();
 			// Don't wrap if already wrapped in block elements
-			if (trimmed.match(/^<(h[1-6]|ul|ol|li|pre|blockquote|hr)/)) {
+			if (trimmed.match(/^<(h[1-6]|ul|ol|li|pre|blockquote|hr|div)/)) {
 				return trimmed;
 			}
 			// Don't wrap empty blocks

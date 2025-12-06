@@ -11,7 +11,7 @@ demo: ""
 technologies: ["Odin","Raylib","WebAssembly","Emscripten","ECS"]
 image: "the-last-polygon.png"
 readTime: "5 min read"
-updated: "2025-08-28"
+updated: "2025-12-06"
 ---
 
 # The Last Polygon

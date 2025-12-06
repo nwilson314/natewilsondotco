@@ -6,160 +6,117 @@
 	
 	let { posts, projects } = data;
 	let currentTime = new Date();
-	
-	const randomMessages = [
-		"Best viewed with curious eyes 👀",
-		"Optimized for midnight browsing 🌙", 
-		"Works best with coffee nearby ☕",
-		"Enhanced by good music 🎵",
-		"Designed for fellow nerds 🤓",
-		"Perfect for procrastinating 😅",
-		"Ideal for rabbit hole diving 🐰",
-		"Made with way too much caffeine ⚡",
-		"Built for the chronically curious 🔍",
-		"Best experienced with snacks 🍿"
-	];
-	
-	let randomMessage = randomMessages[Math.floor(Math.random() * randomMessages.length)];
 
 	onMount(() => {
 		const interval = setInterval(() => {
 			currentTime = new Date();
-		}, 1000);
+		}, 60000); // Update every minute instead of every second
 
 		return () => clearInterval(interval);
 	});
 
-	function formatLastUpdated() {
-		return currentTime.toLocaleString('en-US', {
-			weekday: 'short',
+	function formatDate() {
+		return currentTime.toLocaleDateString('en-US', {
 			year: 'numeric',
 			month: 'short', 
-			day: 'numeric',
-			hour: '2-digit',
-			minute: '2-digit'
+			day: 'numeric'
 		});
 	}
 </script>
 
-<div class="py-8">
-	<!-- Header -->
-	<div class="mb-12">
-		<div class="border-2 border-dashed border-blue-300 dark:border-blue-700 rounded-lg p-6 bg-blue-50 dark:bg-blue-950/20">
-			<h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
-				🌱 Welcome to Nate's Digital Garden
-			</h1>
-			<p class="text-lg text-gray-600 dark:text-gray-300 mb-1">
-				Currently tending: Odin game dev, AI rabbit holes, and way too many side projects
+<div class="py-8 max-w-2xl">
+	<!-- Intro -->
+	<section class="mb-12">
+		<h1 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+			Nate Wilson
+		</h1>
+		<p class="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+			Software engineer focused on backend systems and databases. Currently at Prevounce Health building healthcare software. Based in Ohio.
+		</p>
+		<p class="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+			Outside of work: small farm, endurance training, too many side projects.
+		</p>
+		<p class="text-sm text-gray-400 dark:text-gray-500">
+			Last updated {formatDate()}
+		</p>
+	</section>
+
+	<!-- Now -->
+	<section class="mb-10">
+		<h2 class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-4">
+			Now
+		</h2>
+		<ul class="space-y-2 text-gray-700 dark:text-gray-300">
+			<li class="border-l-2 border-gray-300 dark:border-gray-600 pl-3">Learning: database internals, storage engines, systems programming in Odin</li>
+			<li class="border-l-2 border-gray-300 dark:border-gray-600 pl-3">Reading: Stormlight Archive Book 3</li>
+			<li class="border-l-2 border-gray-300 dark:border-gray-600 pl-3">Recently finished: Ironman Ohio 2025</li>
+		</ul>
+	</section>
+
+	<!-- Projects -->
+	<section class="mb-10">
+		<h2 class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-4">
+			Projects
+		</h2>
+		{#if projects.length > 0}
+			<ul class="space-y-2">
+				{#each projects.slice(0, 5) as project}
+					<li class="border-l-2 border-gray-300 dark:border-gray-600 pl-3">
+						<a href="/projects/{project.id}" class="text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 font-medium">
+							{project.title}
+						</a>
+						{#if project.status === 'in-progress'}
+							<span class="text-gray-400 dark:text-gray-500 text-sm ml-1">(active)</span>
+						{/if}
+					</li>
+				{/each}
+			</ul>
+			<p class="mt-4 pl-3">
+				<a href="/projects" class="text-sm text-blue-600 dark:text-blue-400 hover:underline">View all projects →</a>
 			</p>
-			<p class="text-sm text-gray-500 dark:text-gray-400">
-				Last watered: {formatLastUpdated()} • Visitor #{Math.floor(Math.random() * 1337) + 1000} 
+		{:else}
+			<p class="text-gray-500 dark:text-gray-400">Loading...</p>
+		{/if}
+	</section>
+
+	{#if posts.length > 0}
+		<!-- Writing -->
+		<section class="mb-10">
+			<h2 class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-4">
+				Writing
+			</h2>
+			<ul class="space-y-2">
+				{#each posts.slice(0, 5) as post}
+					<li class="border-l-2 border-gray-300 dark:border-gray-600 pl-3">
+						<a href="/blog/{post.id}" class="text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 font-medium">
+							{post.title}
+						</a>
+					</li>
+				{/each}
+			</ul>
+			<p class="mt-4 pl-3">
+				<a href="/blog" class="text-sm text-blue-600 dark:text-blue-400 hover:underline">View all posts →</a>
 			</p>
-		</div>
-	</div>
+		</section>
+	{/if}
 
-	<!-- Content Grid -->
-	<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-		<!-- What's Growing (Recent Projects) -->
-		<div class="space-y-4">
-			<h2 class="text-2xl font-semibold text-gray-900 dark:text-white border-b-2 border-green-300 dark:border-green-700 pb-1">
-				🔨 What I'm Building
-			</h2>
-			{#if projects.length > 0}
-				<div class="space-y-2">
-					{#each projects.slice(0, 3) as project}
-						<div class="group">
-							<a href="/projects/{project.id}" class="block hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded transition-colors">
-								<div class="flex items-center gap-2">
-									<span class="text-green-600 dark:text-green-400">→</span>
-									<span class="text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 font-medium">
-										{project.title}
-									</span>
-									{#if project.status === 'in-progress'}
-										<span class="text-xs px-2 py-0.5 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 rounded">
-											active
-										</span>
-									{/if}
-								</div>
-							</a>
-						</div>
-					{/each}
-				</div>
-				<a href="/projects" class="inline-block text-green-600 dark:text-green-400 hover:underline text-sm">
-					→ explore the workshop
-				</a>
-			{:else}
-				<p class="text-gray-500 dark:text-gray-400 italic">Loading projects...</p>
-			{/if}
-		</div>
+	<!-- Links -->
+	<section class="mb-10">
+		<h2 class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-4">
+			Elsewhere
+		</h2>
+		<ul class="space-y-2">
+			<li class="border-l-2 border-gray-300 dark:border-gray-600 pl-3"><a href="https://github.com/nwilson314" target="_blank" rel="noopener noreferrer" class="text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400">GitHub</a></li>
+			<li class="border-l-2 border-gray-300 dark:border-gray-600 pl-3"><a href="https://linkedin.com/in/natewilson314" target="_blank" rel="noopener noreferrer" class="text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400">LinkedIn</a></li>
+			<li class="border-l-2 border-gray-300 dark:border-gray-600 pl-3"><a href="/contact" class="text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400">Contact</a></li>
+			<li class="border-l-2 border-gray-300 dark:border-gray-600 pl-3"><a href="/Nate_Wilson_Resume_2025.pdf" download class="text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400">Resume (PDF)</a></li>
+		</ul>
+	</section>
 
-		<!-- Fresh Thoughts (Recent Blog Posts) -->
-		<div class="space-y-4">
-			<h2 class="text-2xl font-semibold text-gray-900 dark:text-white border-b-2 border-purple-300 dark:border-purple-700 pb-1">
-				💭 Fresh Thoughts
-			</h2>
-			{#if posts.length > 0}
-				<div class="space-y-2">
-					{#each posts.slice(0, 3) as post}
-						<div class="group">
-							<a href="/blog/{post.id}" class="block hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded transition-colors">
-								<div class="flex items-center gap-2">
-									<span class="text-purple-600 dark:text-purple-400">→</span>
-									<span class="text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 font-medium">
-										{post.title}
-									</span>
-									{#if post.featured}
-										<span class="text-xs px-2 py-0.5 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded">
-											pinned
-										</span>
-									{/if}
-								</div>
-							</a>
-						</div>
-					{/each}
-				</div>
-				<a href="/blog" class="inline-block text-purple-600 dark:text-purple-400 hover:underline text-sm">
-					→ wander through my mind
-				</a>
-			{:else}
-				<p class="text-gray-500 dark:text-gray-400 italic">Loading thoughts...</p>
-			{/if}
-		</div>
-
-		<!-- Random Stuff -->
-		<div class="space-y-4 md:col-span-2 lg:col-span-1">
-			<h2 class="text-2xl font-semibold text-gray-900 dark:text-white border-b-2 border-orange-300 dark:border-orange-700 pb-1">
-				🎲 Random Stuff
-			</h2>
-			<div class="space-y-3 text-sm">
-				<div class="flex items-center gap-2">
-					<span class="text-orange-600 dark:text-orange-400">→</span>
-					<span class="text-gray-700 dark:text-gray-300">Currently focused on: Odin Game Dev and ECS</span>
-				</div>
-				<div class="flex items-center gap-2">
-					<span class="text-orange-600 dark:text-orange-400">→</span>
-					<span class="text-gray-700 dark:text-gray-300">Recently completed: IM Ohio 2025</span>
-				</div>
-				<div class="flex items-center gap-2">
-					<span class="text-orange-600 dark:text-orange-400">→</span>
-					<span class="text-gray-700 dark:text-gray-300">Currently reading: Stormlight Archive Book 3</span>
-				</div>
-				<div class="flex items-center gap-2">
-					<span class="text-orange-600 dark:text-orange-400">→</span>
-					<a href="/about" class="text-blue-600 dark:text-blue-400 hover:underline">Learn more about me</a>
-				</div>
-				<div class="flex items-center gap-2">
-					<span class="text-orange-600 dark:text-orange-400">→</span>
-					<a href="/contact" class="text-blue-600 dark:text-blue-400 hover:underline">Say hello</a>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- ASCII Art Footer -->
-	<div class="mt-16 text-center">
-		<pre class="text-xs text-gray-400 dark:text-gray-600 font-mono leading-tight">╔════════════════════════════════════════╗
-║  {randomMessage.padEnd(36)}  ║
-╚════════════════════════════════════════╝</pre>
-	</div>
+	<!-- Simple footer note -->
+	<footer class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+		<p class="text-sm text-gray-400 dark:text-gray-500 text-center">
+			Thanks for stopping by.
+		</p>
+	</footer>
 </div>

@@ -11,7 +11,7 @@ technologies: ["SvelteKit","FastAPI","Python","TypeScript","Tailwind CSS","Postg
 image: "landing_page_cup.png"
 images: ["roastnotes-dashboard.png","roastnotes-profile.png","roastnotes-cupping.png"]
 readTime: "3 min read"
-updated: "2025-08-28"
+updated: "2025-12-06"
 ---
 
 ![roastnotes landing page](roastnotes_landing.png)

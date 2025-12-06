@@ -1,186 +1,75 @@
 <svelte:head>
-	<title>Get to Know Me - Nate Wilson</title>
-	<meta name="description" content="Software developer, farm life enthusiast, and Ironman finisher. Here's the story." />
+	<title>About - Nate Wilson</title>
+	<meta name="description" content="About Nate Wilson, a software engineer focused on backend systems and databases who splits his time between healthcare software, a small farm, and endurance training." />
 </svelte:head>
 
-<div class="py-8">
-	<!-- Header with early web vibes -->
-	<div class="mb-12">
-		<div class="border-2 border-dashed border-green-300 dark:border-green-700 rounded-lg p-6 bg-green-50 dark:bg-green-950/20 mb-8">
-			<h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
-				👋 Hey, I'm Nate
-			</h1>
-			<p class="text-lg text-gray-600 dark:text-gray-300 mb-1">
-				Software developer by day, farm hand by evening, Ironman finisher when I'm feeling masochistic
-			</p>
-			<p class="text-sm text-gray-500 dark:text-gray-400">
-				Last updated: Recently • Status: Probably debugging something
-			</p>
-		</div>
-		
-		<p class="text-xl text-gray-600 dark:text-gray-300 mb-4">
-			I write code for a living and like solving complex problems with real world implications.
-			Lately I've been getting obsessed with making software that's not just correct, but actually fast. 
-			There's something deeply satisfying about code that does what it's supposed to do without making users wait.
+<div class="py-8 max-w-2xl">
+	<h1 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+		About
+	</h1>
+
+	<section class="space-y-4 text-gray-700 dark:text-gray-300 mb-8">
+		<p>
+			Hey, I'm Nate. I'm a software engineer who leans toward the backend and data side of things. I spend most of my time building healthcare software at Prevounce Health and the rest trying to keep things running on a small farm in Ohio.
 		</p>
-		<p class="text-xl text-gray-600 dark:text-gray-300 mb-8">
-			Currently wrangling healthcare APIs at Prevounce Health while simultaneously trying to keep vegetables alive on our farm.
+		<p>
+			I didn't start in software. I studied electrical and computer engineering at Ohio State and spent a few years as an applications engineer in semiconductors. It was a solid job on paper, but I never quite felt like I was doing the thing I actually cared about.
 		</p>
-	</div>
-
-	<!-- Colorful content sections -->
-	<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-		<!-- Day job -->
-		<div class="bg-blue-50 dark:bg-blue-950/20 border-2 border-blue-200 dark:border-blue-800 rounded-lg p-6">
-			<h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4 border-b-2 border-blue-300 dark:border-blue-700 pb-2">
-				💼 Day Job Status
-			</h2>
-			<div class="space-y-3 text-gray-700 dark:text-gray-300">
-				<div>
-					<span class="text-blue-600 dark:text-blue-400">→</span> 
-					<strong>Currently:</strong> Prevounce Health
-				</div>
-				<div>
-					<span class="text-blue-600 dark:text-blue-400">→</span> 
-					<strong>What I do:</strong> Healthcare APIs & developer tools
-				</div>
-				<div>
-					<span class="text-blue-600 dark:text-blue-400">→</span> 
-					<strong>Stack:</strong> Python, React, AWS
-				</div>
-				<div>
-					<span class="text-blue-600 dark:text-blue-400">→</span> 
-					<strong>Reality:</strong> Healthcare data is surprisingly fragile
-				</div>
-			</div>
-		</div>
-
-		<!-- Tech stuff -->
-		<div class="bg-green-50 dark:bg-green-950/20 border-2 border-green-200 dark:border-green-800 rounded-lg p-6">
-			<h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4 border-b-2 border-green-300 dark:border-green-700 pb-2">
-				🔧 Tech I Know
-			</h2>
-			<div class="space-y-3 text-sm text-gray-700 dark:text-gray-300">
-				<div>
-					<span class="font-medium">Languages:</span><br/>
-					Python, TypeScript, Odin (for fun)
-				</div>
-				<div>
-					<span class="font-medium">Frameworks:</span><br/>
-					FastAPI, SvelteKit, React/Next.js
-				</div>
-				<div>
-					<span class="font-medium">Cloud stuff:</span><br/>
-					AWS, Docker, gRPC
-				</div>
-				<div>
-					<span class="font-medium">Databases:</span><br/>
-					PostgreSQL, DynamoDB, Redis
-				</div>
-			</div>
-		</div>
-
-		<!-- Current obsessions -->
-		<div class="bg-purple-50 dark:bg-purple-950/20 border-2 border-purple-200 dark:border-purple-800 rounded-lg p-6 md:col-span-2 lg:col-span-1">
-			<h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4 border-b-2 border-purple-300 dark:border-purple-700 pb-2">
-				🎯 Current Obsessions
-			</h2>
-			<div class="space-y-3 text-sm text-gray-700 dark:text-gray-300">
-				<div>
-					<span class="text-purple-600 dark:text-purple-400">→</span> 
-					<strong>Game dev:</strong> ECS architecture & Odin
-				</div>
-				<div>
-					<span class="text-purple-600 dark:text-purple-400">→</span> 
-					<strong>Reading:</strong> Stormlight Archive Book 3
-				</div>
-				<div>
-					<span class="text-purple-600 dark:text-purple-400">→</span> 
-					<strong>Farm life:</strong> Keeping vegetables alive
-				</div>
-				<div>
-					<span class="text-purple-600 dark:text-purple-400">→</span> 
-					<strong>Athletics:</strong> Plotting the next race
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- Random facts section -->
-	<div class="mb-12">
-		<h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-6 border-b-2 border-orange-300 dark:border-orange-700 pb-2">
-			🎲 Random Facts & Life Updates
-		</h2>
-		<div class="grid md:grid-cols-2 gap-6">
-			<div class="bg-orange-50 dark:bg-orange-950/20 border-2 border-orange-200 dark:border-orange-800 rounded-lg p-6">
-				<h3 class="font-medium text-gray-900 dark:text-white mb-3">📍 Background</h3>
-				<div class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
-					<div>Started with electrical engineering at Ohio State</div>
-					<div>Pivoted to computer science masters at Northeastern</div>
-					<div>Turns out hardware and software are both hard, just differently</div>
-				</div>
-			</div>
-			<div class="bg-red-50 dark:bg-red-950/20 border-2 border-red-200 dark:border-red-800 rounded-lg p-6">
-				<h3 class="font-medium text-gray-900 dark:text-white mb-3">🏃 Triathlon Status</h3>
-				<div class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
-					<div>Full Ironman: Fall 2024 ✅</div>
-					<div>Half Ironman Ohio: 2025 ✅</div>
-					<div>Current state: Recovering but plotting the next one</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- Philosophy section -->
-	<div class="bg-yellow-50 dark:bg-yellow-950/20 border-2 border-yellow-200 dark:border-yellow-800 rounded-lg p-8 mb-12">
-		<h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-4 border-b-2 border-yellow-300 dark:border-yellow-700 pb-2">
-			💭 How I Think About This Stuff
-		</h2>
-		<div class="space-y-4 text-gray-700 dark:text-gray-300">
-			<p>
-				I like building things that just work. Not in a perfectionist way, but in a "people can actually use this 
-				without pulling their hair out" way. Most of my time is spent figuring out why something broke, how to make 
-				it not break again, and occasionally building something new from scratch - which is where I get to think 
-				about performance from the ground up.
-			</p>
-			<p>
-				The best part of this job is when you write some code and it actually solves someone's real problem. 
-				Maybe it saves them time, maybe it prevents errors, maybe it just makes their day a little less frustrating. 
-				That's what keeps me interested in all this.
-			</p>
-		</div>
-	</div>
-
-	<!-- Contact/Social section -->
-	<div class="text-center">
-		<h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-6 border-b-2 border-blue-300 dark:border-blue-700 pb-2">
-			📬 Want to Chat?
-		</h2>
-		<p class="text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
-			Always up for talking about code, farm life, triathlon training, or why Oathbringer is the best Stormlight book.
-			Hit me up!
+		<p>
+			I kept drifting back to code: side projects, small web apps, and a bit of game tinkering. Eventually it was clear this wasn't just a hobby. I went back for a master's in computer science at Northeastern, shifted into software engineering, and eventually landed at a healthcare startup.
 		</p>
-		<div class="flex justify-center space-x-4">
-			<a 
-				href="/contact" 
-				class="inline-flex items-center px-6 py-3 bg-blue-600 dark:bg-blue-700 text-white font-medium rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors"
-			>
-				Say Hello →
-			</a>
-			<a 
-				href="/Nate_Wilson_Resume_2025.pdf" 
-				download
-				class="inline-flex items-center px-6 py-3 border-2 border-green-300 dark:border-green-700 text-gray-700 dark:text-gray-300 font-medium rounded-lg hover:bg-green-50 dark:hover:bg-green-950/20 transition-colors"
-			>
-				Grab My Resume →
-			</a>
-		</div>
-	</div>
+		<p>
+			These days my day job is mostly backend systems, APIs, databases, and the unglamorous parts of making things reliable. It's a good place to be, but it's also the kind of role where you can quietly stagnate if you're not paying attention, so I try not to.
+		</p>
+	</section>
 
-	<!-- ASCII art footer -->
-	<div class="mt-16 text-center">
-		<pre class="text-xs text-gray-400 dark:text-gray-600 font-mono leading-tight">╔══════════════════════════════════════════╗
-║  Thanks for reading my digital diary! 📖  ║
-╚══════════════════════════════════════════╝</pre>
-	</div>
+	<hr class="border-gray-200 dark:border-gray-700" />
+
+	<section class="my-8">
+		<h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+			What I'm learning
+		</h2>
+		<p class="text-gray-700 dark:text-gray-300 mb-4">
+			Right now I'm spending most of my learning time on database internals, systems programming (with a soft spot for Odin), and figuring out how to make services behave well under load. I care less about whatever framework is trending and more about how to make real systems work and work well.
+		</p>
+	</section>
+
+	<hr class="border-gray-200 dark:border-gray-700" />
+
+	<section class="my-8">
+		<h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+			Outside of work
+		</h2>
+		<p class="text-gray-700 dark:text-gray-300">
+			Life is a mix of farm chores and long training blocks. My partner and I run a small farm, which is a good reminder that not everything can be version controlled and rolled back. I've finished a couple of Ironmans and currently trying to figure out what to train for next. There's something appealing about signing up for things that take months of slow work and then demand everything in one day.
+		</p>
+	</section>
+
+	<hr class="border-gray-200 dark:border-gray-700" />
+
+	<section class="my-8">
+		<h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+			This site
+		</h2>
+		<p class="text-gray-700 dark:text-gray-300">
+			This is where I keep track of what I'm learning, what I'm building, and the things I get stuck on along the way. A lot of it is written for future me, but if you're also into backend systems, databases, game dev experiments, or just trying to take your craft seriously over the long term, I hope some of it is useful.
+		</p>
+	</section>
+
+	<hr class="border-gray-200 dark:border-gray-700" />
+
+	<section class="my-8">
+		<h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+			Get in touch
+		</h2>
+		<p class="text-gray-700 dark:text-gray-300 mb-4">
+			If something here resonates or you're working on similar problems, I'm always up for talking shop.
+		</p>
+		<ul class="space-y-2">
+			<li><a href="/contact">Send me a message</a></li>
+			<li><a href="https://github.com/nwilson314" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+			<li><a href="https://linkedin.com/in/natewilson314" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+			<li><a href="/Nate_Wilson_Resume_2025.pdf" download>Resume (PDF)</a></li>
+		</ul>
+	</section>
 </div>
