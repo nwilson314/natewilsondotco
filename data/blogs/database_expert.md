@@ -10,26 +10,24 @@ series_featured: true
 series_description: "A 12-18 month journey to understand database internals, from storage engines to distributed systems."
 readTime: "8 min read"
 ---
-# Becoming a Database Expert*
+# Becoming a Database Expert<sup>*</sup>
 
-In this new era of LLMs and AI, doing (text-based) things has never been faster. With only small amounts of text inputs, we can produce huge volumes of text outputs. And in most cases, that's great! Zero to prototype/MVP is crazy fast. People with zero coding knowledge or skills can bring their ideas to life in ways that have never before been possible. Even seasoned software engineers are able to refactor and extend production code quicker than they ever could before.
+In this new era of LLMs and AI, doing (text-based) things has never been faster. And perhaps the best use case is leveling up your fundamental knowledge. LLMs are *great* at reading and summarizing. Especially recent iterations of them. I want to leverage this capability to really dive deep into a topic I've long had an interest in: databases.
 
-However, at least anecdotally, when you look around at the state of software, things aren't quite as rosy. Scroll through X/Twitter and you'll see a stark contradiction. On one side: "It's SO OVER for SWE. I just built Gmail in two hours with 600 agents." And on the other: "Breaking: <Cloud Provider of the Day> is down because of a minor bug in a single config file and no one can get on half the internet." If building software was so trivially easy now, then why is production software still breaking in embarrassingly simple ways? 
-
-Now, this was happening before LLMs started to interject themselves into our everyday lives. Producing products is often (and probably rightly in the end) more productive for humanity than optimizing the heck out of some process. But we have perhaps gone too far. And LLMs are not going to make this better (at least in my estimation), and very likely will worsen the problem in the short to medium term. Being able to produce software is opening up to more and more people but it's often in a state of "good enough." Where "good enough" requires layers of abstraction piling up and the orders of magnitude of hardware gains over the last 20 years are just thrown out the window.
-
-But I digress. I'm not here to preach about bad software proliferating or the over pontificating of LLMs "prowess." Instead, that is the backdrop for a different proposal: that fundamental CS knowledge has never been **more** valuable than it is right now. 
-
-You may argue, and I'm certain there are a number who would, that you don't need to learn these things because that information is available whenever you want it via the LLM chatbot du jour. This is true! And it was also true before (though in a more cumbersome way) via Google search and the Internet writ large. But even then, anyone that has ever been in the room with a person that just *knows* things understands the power of knowledge. 
-
-Moreover, even as LLMs spit out more and more code, they have limitations. Context windows are often not large enough to keep ongoing persistent knowledge. Gaps are introduced. Linking between concepts is not always as crisp as the context window grows and the questions get less concrete. And sometimes "good enough" is what the LLM produces when "great" is what you needed. If you can't tell when these things are happening, the slop begins rolling downhill fast.
-
-Ok. That's all well and good. But where am I going with this? Well for one, I don't think I'm there yet. I'm not the person in the room that just *knows* things. But I want to be. I spend a lot of my time every day coding and thinking about software engineering. I want to hone my craft. I want to be GOOD. And, at least for me personally, I derive some meaning to my life by being good at the things that I love spending time on.
-
-And so, I've decided that I'm going to embark on a 12-18 month journey to become a Database Systems Expert*. The asterisk here to say that I acknowledge a few things:
-- Expert is bit heavy handed. Expert compared to most and expert compared to myself right now. I have no illusions that I will be world class (and maybe not ever!), but that's ok.
+And so, I've decided that I'm going to embark on a 12-18 month journey to become a Database Systems Expert<sup>*</sup>. The asterisk here to say that I acknowledge a few things:
+- Expert is bit heavy handed. I expect to be an expert compared to most and an expert compared to myself at this moment. I have no illusions that I will be world class (and maybe not ever!), but that's ok.
 - 12-18 months is pretty wide ranging. I have an outline in mind but I expect it to change.
 - 12-18 months is REALLY long. Yeah, this is the big risk with this. I might give up. Life happens. But I want to try.
+
+## Why learn at all?
+
+You may argue, and I'm certain there are a number who would, that you don't need to learn these things because that information is available whenever you want it via the LLM chatbot du jour. This is true! And it was also true before (though in a more cumbersome way) via Google search and the Internet writ large. However, LLMs can distill this down into concentrated learning paths. As I'm learning and coding (by hand), I have a personal teacher that can review and nudge me in the right direction. This is amazing! And was never possible before now.
+
+Ok, but why bother?
+
+Well, I spend a lot of my time every day coding and thinking about software engineering. I want to hone my craft. I want to be GOOD. And, at least for me personally, I derive some meaning to my life by being good at the things that I love spending time on.
+
+So even though I might be coding less and less over time, I do believe that software engineers will continue to exist in the next 5-10 years. And because I like doing it, there's still incentives to be knowledgable. It might be paradoxical in thinking, but if everyone has access to ALL knowledge, then knowing what knowledge is relevant is the new skill. How do you know what knowledge is relevant? Well, by having it in the first place.
 
 ## Why Databases
 

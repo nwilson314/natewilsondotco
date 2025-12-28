@@ -11,7 +11,7 @@ technologies: ["Odin","ECS Architecture","Systems Programming"]
 image: "raven_code_ex.png"
 images: ["raven-ecs-performance.png","raven-ecs-architecture.png"]
 readTime: "4 min read"
-updated: "2025-12-06"
+updated: "2025-12-28"
 ---
 
 # Raven ECS
