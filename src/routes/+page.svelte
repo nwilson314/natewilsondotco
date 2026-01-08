@@ -43,73 +43,89 @@
 
 	<!-- Now -->
 	<section class="mb-10">
-		<h2 class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-4">
+		<h2 class="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-4 font-sans">
 			Now
 		</h2>
 		<ul class="space-y-2 text-gray-700 dark:text-gray-300">
-			<li class="border-l-2 border-gray-300 dark:border-gray-600 pl-3">Learning: database internals, storage engines, systems programming in Odin</li>
-			<li class="border-l-2 border-gray-300 dark:border-gray-600 pl-3">Reading: Stormlight Archive Book 3</li>
-			<li class="border-l-2 border-gray-300 dark:border-gray-600 pl-3">Recently finished: Ironman Ohio 2025</li>
+			<li class="pl-4 border-l-2 border-gray-300 dark:border-gray-600 font-serif">
+				Learning: database internals, storage engines, systems programming in Odin
+			</li>
+			<li class="pl-4 border-l-2 border-gray-300 dark:border-gray-600 font-serif">
+				Reading: Database Internals
+			</li>
+			<li class="pl-4 border-l-2 border-gray-300 dark:border-gray-600 font-serif">
+				Recently finished: Ironman Ohio 2025
+			</li>
 		</ul>
 	</section>
 
 	<!-- Projects -->
 	<section class="mb-10">
-		<h2 class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-4">
+		<h2 class="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-4 font-sans">
 			Projects
 		</h2>
 		{#if projects.length > 0}
-			<ul class="space-y-2">
+			<ul class="space-y-4">
 				{#each projects.slice(0, 5) as project}
-					<li class="border-l-2 border-gray-300 dark:border-gray-600 pl-3">
-						<a href="/projects/{project.id}" class="text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 font-medium">
-							{project.title}
-						</a>
-						{#if project.status === 'in-progress'}
-							<span class="text-gray-400 dark:text-gray-500 text-sm ml-1">(active)</span>
-						{/if}
+					<li class="pl-4 border-l-2 {project.status === 'in-progress' ? 'border-blue-500 dark:border-blue-400' : 'border-gray-300 dark:border-gray-600'} group">
+						<div class="flex items-baseline justify-between mb-1">
+							<a href="/projects/{project.id}" class="text-base font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 font-sans tracking-tight no-underline">
+								{project.title}
+							</a>
+							{#if project.status === 'in-progress'}
+								<span class="text-xs font-mono text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-2 py-0.5 rounded-full">active</span>
+							{/if}
+						</div>
+						<p class="text-sm text-gray-600 dark:text-gray-400 font-serif leading-relaxed">
+							{project.excerpt}
+						</p>
 					</li>
 				{/each}
 			</ul>
-			<p class="mt-4 pl-3">
-				<a href="/projects" class="text-sm text-blue-600 dark:text-blue-400 hover:underline">View all projects →</a>
+			<p class="mt-4 pl-4">
+				<a href="/projects" class="text-sm font-bold text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200 font-sans uppercase tracking-wide no-underline">View all projects →</a>
 			</p>
 		{:else}
-			<p class="text-gray-500 dark:text-gray-400">Loading...</p>
+			<p class="text-gray-500 dark:text-gray-400 font-sans">Loading...</p>
 		{/if}
 	</section>
 
 	{#if posts.length > 0}
 		<!-- Writing -->
 		<section class="mb-10">
-			<h2 class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-4">
+			<h2 class="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-4 font-sans">
 				Writing
 			</h2>
-			<ul class="space-y-2">
+			<ul class="space-y-4">
 				{#each posts.slice(0, 5) as post}
-					<li class="border-l-2 border-gray-300 dark:border-gray-600 pl-3">
-						<a href="/blog/{post.id}" class="text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 font-medium">
-							{post.title}
+					<li class="pl-4 border-l-2 border-gray-300 dark:border-gray-600 group">
+						<a href="/blog/{post.id}" class="block no-underline">
+							<span class="text-base font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 font-sans tracking-tight">
+								{post.title}
+							</span>
+							<span class="block text-sm text-gray-600 dark:text-gray-400 mt-1 font-serif leading-relaxed">
+								{post.excerpt}
+							</span>
 						</a>
 					</li>
 				{/each}
 			</ul>
-			<p class="mt-4 pl-3">
-				<a href="/blog" class="text-sm text-blue-600 dark:text-blue-400 hover:underline">View all posts →</a>
+			<p class="mt-4 pl-4">
+				<a href="/blog" class="text-sm font-bold text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200 font-sans uppercase tracking-wide no-underline">View all posts →</a>
 			</p>
 		</section>
 	{/if}
 
 	<!-- Links -->
 	<section class="mb-10">
-		<h2 class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-4">
+		<h2 class="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-4 font-sans">
 			Elsewhere
 		</h2>
 		<ul class="space-y-2">
-			<li class="border-l-2 border-gray-300 dark:border-gray-600 pl-3"><a href="https://github.com/nwilson314" target="_blank" rel="noopener noreferrer" class="text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400">GitHub</a></li>
-			<li class="border-l-2 border-gray-300 dark:border-gray-600 pl-3"><a href="https://linkedin.com/in/natewilson314" target="_blank" rel="noopener noreferrer" class="text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400">LinkedIn</a></li>
-			<li class="border-l-2 border-gray-300 dark:border-gray-600 pl-3"><a href="/contact" class="text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400">Contact</a></li>
-			<li class="border-l-2 border-gray-300 dark:border-gray-600 pl-3"><a href="/Nate_Wilson_Resume_2025.pdf" download class="text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400">Resume (PDF)</a></li>
+			<li class="pl-4 border-l-2 border-gray-300 dark:border-gray-600"><a href="https://github.com/nwilson314" target="_blank" rel="noopener noreferrer" class="text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 font-sans font-medium">GitHub</a></li>
+			<li class="pl-4 border-l-2 border-gray-300 dark:border-gray-600"><a href="https://linkedin.com/in/natewilson314" target="_blank" rel="noopener noreferrer" class="text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 font-sans font-medium">LinkedIn</a></li>
+			<li class="pl-4 border-l-2 border-gray-300 dark:border-gray-600"><a href="/contact" class="text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 font-sans font-medium">Contact</a></li>
+			<li class="pl-4 border-l-2 border-gray-300 dark:border-gray-600"><a href="/Nate_Wilson_Resume_2025.pdf" download class="text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 font-sans font-medium">Resume</a></li>
 		</ul>
 	</section>
 

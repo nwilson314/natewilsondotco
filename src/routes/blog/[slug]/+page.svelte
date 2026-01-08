@@ -32,42 +32,45 @@
 {:else if post}
 	<div class="py-8 max-w-2xl">
 		<!-- Back link -->
-		<p class="mb-6">
-			<a href="/blog">← writing</a>
+		<p class="mb-8">
+			<a href="/blog" class="no-underline text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200 transition-colors font-sans text-sm font-medium uppercase tracking-wide">← Writing</a>
 		</p>
 
 		<!-- Header -->
-		<header class="mb-8">
-			<h1 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+		<header class="mb-10">
+			<h1 class="text-3xl md:text-4xl font-extrabold mb-3 tracking-tight">
 				{post.title}
 			</h1>
 			
-			<p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
-				{formatDate(post.date)}
+			<div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-500 dark:text-gray-400 font-mono">
+				<time datetime={post.date}>{formatDate(post.date)}</time>
 				{#if post.updated && post.updated !== post.date}
-					· Updated {formatDate(post.updated)}
+					<span>(Updated {formatDate(post.updated)})</span>
 				{/if}
-				· {post.readTime}
-			</p>
+				<span>·</span>
+				<span>{post.readTime}</span>
+				
+				{#if post.series && seriesNavigation.seriesBlogs.length > 1}
+					<span class="text-gray-300 dark:text-gray-600">|</span>
+					<a href="/blog/series/{post.series.toLowerCase().replace(/\s+/g, '-')}" class="text-blue-600 dark:text-blue-400 hover:underline">
+						{post.series} <span class="text-gray-400 dark:text-gray-500">#{post.series_part || 1}</span>
+					</a>
+				{/if}
+			</div>
 
 			{#if post.tags.length > 0}
-				<p class="text-sm text-gray-400 dark:text-gray-500">
-					{post.tags.join(' · ')}
-				</p>
-			{/if}
-
-			{#if post.series && seriesNavigation.seriesBlogs.length > 1}
-				<p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
-					Part of <a href="/blog/series/{post.series.toLowerCase().replace(/\s+/g, '-')}">{post.series}</a> 
-					(Part {post.series_part || 1} of {seriesNavigation.seriesBlogs.length})
-				</p>
+				<div class="mt-3 flex gap-2">
+					{#each post.tags as tag}
+						<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200 font-mono">
+							{tag}
+						</span>
+					{/each}
+				</div>
 			{/if}
 		</header>
 
-		<hr class="border-gray-200 dark:border-gray-700 mb-8" />
-
 		<!-- Content -->
-		<article class="prose-custom">
+		<article class="prose dark:prose-invert max-w-none prose-headings:font-sans prose-headings:font-bold prose-p:font-serif prose-code:font-mono prose-pre:font-mono prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl">
 			<SyntaxHighlighter content={markdownToHtml(post.content)} />
 		</article>
 
