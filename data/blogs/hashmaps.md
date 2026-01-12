@@ -1,5 +1,5 @@
 ---
-title: "Hashmap Collisions Deepdive"
+title: "Learnings about Hashmaps"
 excerpt: "Hash collision strategies and why context determines which one to use"
 date: "2026-01-12"
 tags: ["computer-science", "systems", "learning", "databases", "go"]
@@ -55,7 +55,7 @@ So while linear probing tends to be the simplest to implement, it often is not u
 
 #### Swiss Tables (and Quadratic Probing)
 
-The further reading section has a few articles that will explain this better and more thoroughly than I could. 
+The **Further Reading** section has a few articles that will explain this better and more thoroughly than I could. 
 
 But the general idea is that Swiss Tables are a form of open addressed tables that break down their backing array into logical groups (usually of 8). Each group has a control word consisting of a byte per slot in the group (so usually 64-bits total for the group of 8 slots). The value of the byte can be used to determine the current status of the slot: empty, deleted, or filled. And if it is in use, the byte contains the lower 7-bits of the hashed key for that slot.
 

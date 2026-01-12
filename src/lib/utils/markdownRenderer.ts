@@ -48,6 +48,10 @@ export function markdownToHtml(markdown: string): string {
 	// Step 2: Process other markdown syntax (now safe from code interference)
 	
 	// Headers with dark mode classes and anchor IDs
+	html = html.replace(/^#### (.*$)/gm, (match, headerText) => {
+		const id = createAnchorId(headerText);
+		return `<h4 id="${id}" class="text-lg font-semibold text-gray-900 dark:text-white mb-2 mt-4">${headerText}</h4>\n`;
+	});
 	html = html.replace(/^### (.*$)/gm, (match, headerText) => {
 		const id = createAnchorId(headerText);
 		return `<h3 id="${id}" class="text-xl font-semibold text-gray-900 dark:text-white mb-3 mt-6">${headerText}</h3>\n`;

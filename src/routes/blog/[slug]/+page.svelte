@@ -70,7 +70,7 @@
 		</header>
 
 		<!-- Content -->
-		<article class="prose dark:prose-invert max-w-none prose-headings:font-sans prose-headings:font-bold prose-p:font-serif prose-code:font-mono prose-pre:font-mono prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl">
+		<article class="prose dark:prose-invert max-w-none prose-headings:font-sans prose-headings:font-bold prose-p:font-serif prose-code:font-mono prose-pre:font-mono prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg">
 			<SyntaxHighlighter content={markdownToHtml(post.content)} />
 		</article>
 
