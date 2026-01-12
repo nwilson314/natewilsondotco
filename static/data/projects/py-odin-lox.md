@@ -1,6 +1,6 @@
 ---
 title: "PyOdin Lox"
-excerpt: "Started implementing the Lox language in Odin, discovered OOP doesn't translate well, switched to Python, then got distracted by other projects."
+excerpt: "An adaptation of the tree-walk interpreter and bytecode virtual machine from Crafting Interpreters."
 date: "2023-08-15"
 tags: ["Programming Languages","Interpreters","Python","Odin","Learning"]
 featured: false
@@ -11,7 +11,7 @@ technologies: ["Python","Odin","Language Design","Tree-walk Interpreter"]
 image: "project_placeholder.png"
 images: ["project_placeholder.png"]
 readTime: "3 min read"
-updated: "2025-12-28"
+updated: "2026-01-12"
 ---
 
 # PyOdin Lox

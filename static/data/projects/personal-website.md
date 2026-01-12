@@ -11,7 +11,7 @@ technologies: ["SvelteKit 5","TypeScript","Tailwind CSS v4","Markdown","SSR"]
 image: "personal_site_landing.png"
 images: ["personal_site_landing.png"]
 readTime: "1 min read"
-updated: "2025-12-28"
+updated: "2026-01-12"
 ---
 
 # natewilson.co

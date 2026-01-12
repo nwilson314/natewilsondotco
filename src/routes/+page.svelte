@@ -123,7 +123,7 @@
 		</h2>
 		<ul class="space-y-2">
 			<li class="pl-4 border-l-2 border-gray-300 dark:border-gray-600"><a href="https://github.com/nwilson314" target="_blank" rel="noopener noreferrer" class="text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 font-sans font-medium">GitHub</a></li>
-			<li class="pl-4 border-l-2 border-gray-300 dark:border-gray-600"><a href="https://linkedin.com/in/natewilson314" target="_blank" rel="noopener noreferrer" class="text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 font-sans font-medium">LinkedIn</a></li>
+			<li class="pl-4 border-l-2 border-gray-300 dark:border-gray-600"><a href="https://linkedin.com/in/natewilson2" target="_blank" rel="noopener noreferrer" class="text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 font-sans font-medium">LinkedIn</a></li>
 			<li class="pl-4 border-l-2 border-gray-300 dark:border-gray-600"><a href="/contact" class="text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 font-sans font-medium">Contact</a></li>
 			<li class="pl-4 border-l-2 border-gray-300 dark:border-gray-600"><a href="/Nate_Wilson_Resume_2025.pdf" download class="text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 font-sans font-medium">Resume</a></li>
 		</ul>

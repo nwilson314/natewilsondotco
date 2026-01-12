@@ -1,23 +1,26 @@
 ---
-title: "Becoming a Database Expert*"
-excerpt: "* Or at least some version of one."
+title: "Learning Database Internals"
+excerpt: "A 12-18 month journey to learn databases from scratch"
 date: "2025-12-06"
-tags: ["computer-science", "systems", "learning", "databases"]
+tags: ["computer-science","systems","learning","databases"]
 featured: true
 series: "Databases"
-series_part: 1
+series_part: "1"
 series_featured: true
 series_description: "A 12-18 month journey to understand database internals, from storage engines to distributed systems."
 readTime: "8 min read"
+updated: "2026-01-12"
 ---
-# Becoming a Database Expert<sup>*</sup>
+
+# Learning Database Internals
 
 In this new era of LLMs and AI, doing (text-based) things has never been faster. And perhaps the best use case is leveling up your fundamental knowledge. LLMs are *great* at reading and summarizing. Especially recent iterations of them. I want to leverage this capability to really dive deep into a topic I've long had an interest in: databases.
 
-And so, I've decided that I'm going to embark on a 12-18 month journey to become a Database Systems Expert<sup>*</sup>. The asterisk here to say that I acknowledge a few things:
-- Expert is bit heavy handed. I expect to be an expert compared to most and an expert compared to myself at this moment. I have no illusions that I will be world class (and maybe not ever!), but that's ok.
+And so, I've decided that I'm going to embark on a 12-18 month journey to learn database internals. First though, some high level notes:
+- My intention is become somewhat of an expert in the field. I use "expert" here more to mean I expect to be an expert compared to most and an expert compared to myself at this moment. I have no illusions that I will be world class (and maybe not ever!), but that's ok.
 - 12-18 months is pretty wide ranging. I have an outline in mind but I expect it to change.
 - 12-18 months is REALLY long. Yeah, this is the big risk with this. I might give up. Life happens. But I want to try.
+- I'm mixing a "from scratch," project-based learning style with university style lectures/readings.
 
 ## Why learn at all?
 
