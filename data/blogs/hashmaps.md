@@ -1,5 +1,5 @@
 ---
-title: "Learnings about Hashmaps"
+title: "Hashmap Collisions Deepdive"
 excerpt: "Hash collision strategies and why context determines which one to use"
 date: "2026-01-12"
 tags: ["computer-science", "systems", "learning", "databases", "go"]

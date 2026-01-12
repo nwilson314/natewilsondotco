@@ -33,7 +33,7 @@ const config = {
 			// Generate static files
 			pages: 'public',
 			assets: 'public',
-			fallback: 'index.html',
+			fallback: '404.html',
 			precompress: false,
 			strict: false
 		}),

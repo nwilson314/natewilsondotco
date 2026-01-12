@@ -48,13 +48,13 @@
 		</h2>
 		<ul class="space-y-2 text-gray-700 dark:text-gray-300">
 			<li class="pl-4 border-l-2 border-gray-300 dark:border-gray-600 font-serif">
-				Learning: database internals, storage engines, systems programming in Odin
+				<em>Learning:</em> Database Internals, Systems Programming in Go
 			</li>
 			<li class="pl-4 border-l-2 border-gray-300 dark:border-gray-600 font-serif">
-				Reading: Database Internals
+				<em>Reading:</em> Database Internals
 			</li>
 			<li class="pl-4 border-l-2 border-gray-300 dark:border-gray-600 font-serif">
-				Recently finished: Ironman Ohio 2025
+				<em>Recently finished:</em> Ironman Ohio 2025
 			</li>
 		</ul>
 	</section>
