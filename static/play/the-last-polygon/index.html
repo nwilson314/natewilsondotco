@@ -38,6 +38,12 @@
 
         // The Module is used as configuration for emscripten.
         var Module = {
+            // Tell Emscripten where to find the .data and .wasm files
+            locateFile: function(path, prefix) {
+                if (path.endsWith(".data")) return "/play/the-last-polygon/" + path;
+                if (path.endsWith(".wasm")) return "/play/the-last-polygon/" + path;
+                return prefix + path;
+            },
             // This is called by emscripten when it starts up.
             instantiateWasm: (imports, successCallback) => {
                 const newImports = {
