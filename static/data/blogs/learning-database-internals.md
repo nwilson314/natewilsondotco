@@ -9,7 +9,7 @@ series_part: "1"
 series_featured: true
 series_description: "A 12-18 month journey to understand database internals, from storage engines to distributed systems."
 readTime: "8 min read"
-updated: "2026-01-12"
+updated: "2026-01-20"
 ---
 
 # Learning Database Internals

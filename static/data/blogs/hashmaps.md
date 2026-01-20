@@ -6,7 +6,7 @@ tags: ["computer-science","systems","learning","databases","go"]
 series: "Databases"
 series_part: "2"
 readTime: "12 min read"
-updated: "2026-01-12"
+updated: "2026-01-20"
 ---
 
 # Learnings about Hashmaps

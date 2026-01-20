@@ -4,14 +4,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Personal website built with SvelteKit - but this isn't your typical portfolio site. This is a **digital garden** 🌱 that harks back to the good ole internet days (late 90s/early 2000s) where personal sites had character and visiting someone's corner of the internet felt like exploring their actual space.
+Personal website built with SvelteKit. This is a professional portfolio and blog that showcases technical depth while maintaining an authentic voice. The goal is to present work in a way that's appropriate for job applications—polished and credible, but not sterile or corporate.
 
-**Vibe Check:**
-- More "come hang out in my digital living room" than "hire me portfolio"
-- Personality-driven copy over corporate speak
-- Fun, exploratory navigation rather than sterile business cards
-- Early web nostalgia with modern tech underneath
-- Content is authored in Markdown and rendered as HTML
+**Design Philosophy:**
+- Clean, editorial aesthetic over flashy or gimmicky
+- Professional enough for hiring managers, personal enough to be memorable
+- Let the technical content speak for itself
+- Personality comes through in the writing, not visual tricks
 
 ## Development Commands
 
@@ -46,44 +45,42 @@ SvelteKit project with TypeScript and Tailwind CSS v4. Uses:
 
 ## Content Structure
 
-- **Digital garden content** in `data/` directory (blogs, projects) authored in Markdown
-- **Static assets** in `static/` directory (images, PDFs, etc.)
+- **Content source files** in `data/` directory (blogs, projects, games) authored in Markdown
+- **Static assets** in `static/` directory (images, PDFs, playable games)
 - **Shared components** in `src/lib/` (accessible via `$lib` alias)
 - **Page routes** in `src/routes/` following SvelteKit conventions
 
-## Design Philosophy
+## Design System
 
-When working on this site, keep in mind:
+The site uses an editorial aesthetic with clear typographic hierarchy:
 
-1. **Personality over polish** - A little rough around the edges is fine if it has character
-2. **Conversational tone** - Write like you're talking to a friend, not a hiring manager
-3. **Fun interactions** - Hover effects, subtle animations, playful elements
-4. **Nostalgic touches** - ASCII art, visitor counters, "last updated" timestamps
-5. **Actual content over generic descriptions** - Show real project titles, current interests, etc.
+- **Fonts**: Inter (headings), Lora (body), JetBrains Mono (code)
+- **Layout**: Constrained width (max-w-2xl for content, max-w-4xl for container)
+- **Visual rhythm**: Left-border treatment on list items for structure
+- **Color**: Minimal palette with blue accent, good dark mode support
 
 ## Content Writing Style
 
-**CRITICAL:** Avoid corporate speak and marketing language. The site has personality, not polish.
+**CRITICAL:** Avoid corporate speak and marketing language. The site should feel like a real person wrote it.
 
-- **Be honest about failures** - "This didn't work out" is better than "strategic pivot"
-- **Include real challenges** - AI is repetitive, projects get slow, things break
-- **Use conversational language** - Write like you're explaining to a friend over coffee
-- **Admit when things suck** - "Turns out AI isn't very creative when given completely open prompts"
-- **Include actual technical details** - Show real problems, not sanitized success stories
-- **Be specific about what you learned** - Include the messy, frustrating parts
+- **Be honest about project status** - "paused," "didn't work out," "still figuring it out" are all fine
+- **Include real challenges** - What was hard, what you learned, what you'd do differently
+- **Use conversational language** - Write like you're explaining to a colleague
+- **Show technical depth** - Include actual implementation details, not just high-level summaries
+- **Admit uncertainty** - "I don't know if this is the right approach" builds more trust than false confidence
 
 Examples of good vs bad:
 - ❌ "Leveraged cutting-edge AI to deliver innovative storytelling experiences"
 - ✅ "Turns out AI gets really repetitive when you give it complete creative freedom"
 
-- ❌ "Successfully implemented dynamic content generation"  
-- ✅ "The stories it generates are honestly kind of boring after a while"
+- ❌ "Successfully architected a scalable microservices platform"  
+- ✅ "The performance is decent—about 0.25ms for 100k entities. Not amazing, but good enough."
 
 ## Key Files
 
-- `src/routes/+page.svelte` - Homepage with digital garden welcome
-- `src/routes/+layout.svelte` - Root layout with global CSS imports  
-- `src/app.css` - Global Tailwind styles
+- `src/routes/+page.svelte` - Homepage with intro, current activities, projects, writing
+- `src/routes/+layout.svelte` - Root layout with global CSS imports and Prism.js setup
+- `src/app.css` - Global Tailwind styles and typography
 - `src/lib/utils/markdown.ts` - Content loading utilities
 - `src/lib/utils/markdownRenderer.ts` - Custom markdown to HTML converter
 - TypeScript config extends `.svelte-kit/tsconfig.json`

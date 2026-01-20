@@ -1,0 +1,16 @@
+{
+    "waypoints": [
+        {"x": 0, "y": 7},
+        {"x": 12, "y": 7},
+        {"x": 12, "y": 3},
+        {"x": 20, "y": 3},
+        {"x": 20, "y": 11},
+        {"x": 25, "y": 11}
+    ],
+    "waves": [
+        {"enemy_type": "basic", "count": 5, "spawn_delay": 0.8, "wave_delay": 0},
+        {"enemy_type": "basic", "count": 8, "spawn_delay": 0.6, "wave_delay": 3},
+        {"enemy_type": "basic", "count": 10, "spawn_delay": 0.5, "wave_delay": 3}
+    ],
+    "starting_gold": 100
+}

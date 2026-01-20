@@ -51,7 +51,7 @@
 				<strong>Learning:</strong> Database Internals, Systems Programming in Go
 			</li>
 			<li class="pl-4 border-l-2 border-gray-300 dark:border-gray-600 font-serif">
-				<strong>Reading:</strong> Database Internals
+				<strong>Reading:</strong> Database Internals and <a href="https://eatonphil.com/2026-ostep.html" target="_blank" rel="noopener noreferrer">Operating Systems: Three Easy Pieces</a>
 			</li>
 			<li class="pl-4 border-l-2 border-gray-300 dark:border-gray-600 font-serif">
 				<strong>Recently finished:</strong> Ironman Ohio 2025

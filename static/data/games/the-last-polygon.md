@@ -11,7 +11,7 @@ demo: ""
 technologies: ["Odin","Raylib","WebAssembly","Emscripten","ECS"]
 image: "the-last-polygon.png"
 readTime: "5 min read"
-updated: "2026-01-12"
+updated: "2026-01-20"
 ---
 
 # The Last Polygon
@@ -43,14 +43,14 @@ Prior to starting this project I had begun building out a reaaaal [simple EC(S)]
 
 ## Web Integration
 
-Getting this to work in the browser was... an adventure. Initially tried to integrate the WebAssembly directly into the SvelteKit component system, but Emscripten really wants to control the entire initialization flow. After fighting with import objects, WebGL contexts, and file loading for way too long, settled on the much simpler approach of using an iframe.
+Getting this to work in the browser was... an adventure. Initially tried to integrate the WebAssembly directly into the SvelteKit component system, but Emscripten really wants to control the entire initialization flow.
 
-The game runs in its native `index.html` environment (exactly as Emscripten intended), but gets embedded into the site's layout. Best of both worlds - the game works perfectly, and it still looks integrated into the digital garden aesthetic.
+The game runs in its native `index.html` environment (exactly as Emscripten intended).
 
 **Build process:**
 1. `odin build . -target:js_wasm32` generates the web files
-2. Copy `index.html`, `index.js`, `index.wasm`, `index.data`, `odin.js` to `/static/games/the-last-polygon/`
-3. The SvelteKit route loads it via iframe
+2. Copy `index.html`, `index.js`, `index.wasm`, `index.data`, `odin.js` to `/static/play/the-last-polygon/`
+3. The SvelteKit route links to it directly
 
 Turns out the "just use what works" approach is often the right one.
 
