@@ -4,7 +4,7 @@
 
 	export let data: PageData;
 	
-	let { posts, projects } = data;
+	let { posts, projects, games } = data;
 	let currentTime = new Date();
 
 	onMount(() => {
@@ -112,6 +112,35 @@
 			</ul>
 			<p class="mt-4 pl-4">
 				<a href="/blog" class="text-sm font-bold text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200 font-sans uppercase tracking-wide no-underline">View all posts →</a>
+			</p>
+		</section>
+	{/if}
+
+	{#if games.length > 0}
+		<!-- Games -->
+		<section class="mb-10">
+			<h2 class="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-4 font-sans">
+				Games
+			</h2>
+			<ul class="space-y-4">
+				{#each games.slice(0, 3) as game}
+					<li class="pl-4 border-l-2 {game.playable ? 'border-green-500 dark:border-green-400' : 'border-gray-300 dark:border-gray-600'} group">
+						<div class="flex items-baseline justify-between mb-1">
+							<a href="/games/{game.id}" class="text-base font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 font-sans tracking-tight no-underline">
+								{game.title}
+							</a>
+							{#if game.playable}
+								<a href="/play/{game.id}/index.html" target="_blank" rel="noopener noreferrer" class="text-xs font-mono text-green-600 dark:text-green-400 hover:underline">play →</a>
+							{/if}
+						</div>
+						<p class="text-sm text-gray-600 dark:text-gray-400 font-serif leading-relaxed">
+							{game.excerpt}
+						</p>
+					</li>
+				{/each}
+			</ul>
+			<p class="mt-4 pl-4">
+				<a href="/games" class="text-sm font-bold text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200 font-sans uppercase tracking-wide no-underline">View all games →</a>
 			</p>
 		</section>
 	{/if}

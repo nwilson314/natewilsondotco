@@ -3,7 +3,7 @@ title: "Raven ECS"
 excerpt: "A minimal-yet-extensible Entity-Component-(System) framework written in Odin, optimized for solo game developers who want some performance without complexity."
 date: "2025-06-20"
 tags: ["Odin", "ECS", "Game Development", "Systems Programming", "Performance"]
-featured: false
+featured: true
 status: "paused"
 github: "https://github.com/nwilson314/raven_ecs"
 demo: ""
