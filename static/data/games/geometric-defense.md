@@ -18,7 +18,7 @@ updated: "2026-01-20"
 
 # Geometric Defense
 
-**Geometric Defense** is a tower defense game built in Odin with Raylib. No sprites, no assets—just procedural geometry. Following [The Last Polygon](/games/the-last-polygon), everything is once again pure Raylib shapes.
+**Geometric Defense** is a tower defense game built in Odin with Raylib. It's a standard tower defense game with a twist: towers placed in 2x2 grids can be combined into more powerful versions. No sprites, no assets—just procedural geometry. Following [The Last Polygon](/games/the-last-polygon), everything is once again pure Raylib shapes.
 
 You can play in the browser with the link above.
 

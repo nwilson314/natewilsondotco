@@ -5,8 +5,8 @@
 	
 	let { games } = data;
 	
-	$: playableGames = games.filter(g => g.playable && g.status === 'complete');
-	$: inProgressGames = games.filter(g => g.status === 'in-progress');
+	$: playableGames = games.filter(g => g.playable);
+	$: inProgressGames = games.filter(g => g.status === 'in-progress' && !g.playable);
 	$: plannedGames = games.filter(g => g.status === 'planned');
 </script>
 

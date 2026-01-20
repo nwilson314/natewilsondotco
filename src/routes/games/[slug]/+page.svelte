@@ -46,12 +46,9 @@
 			{/if}
 		</p>
 
-		{#if game.playable && game.status === 'complete'}
+		{#if game.playable}
 			<p class="mb-4">
 				<a href="/play/{game.id}/index.html" target="_blank" rel="noopener noreferrer" class="font-medium">Play now →</a>
-			</p>
-			<p class="text-sm text-gray-500 dark:text-gray-400">
-				Controls: WASD to move, auto-fires at enemies
 			</p>
 		{:else if game.status === 'in-progress'}
 			<p class="text-gray-500 dark:text-gray-400 text-sm">
