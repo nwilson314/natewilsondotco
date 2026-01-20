@@ -29,11 +29,16 @@
 				Playable
 			</h2>
 			<ul class="space-y-8">
-				{#each playableGames as game}
-					<li class="border-l-2 border-green-500 pl-4">
+			{#each playableGames as game}
+				<li class="border-l-2 {game.status === 'in-progress' ? 'border-yellow-500' : 'border-green-500'} pl-4">
+					<div class="flex items-center gap-2">
 						<a href="/games/{game.id}" class="text-lg text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 font-semibold">
 							{game.title}
 						</a>
+						{#if game.status === 'in-progress'}
+							<span class="text-xs font-mono text-yellow-600 dark:text-yellow-400 bg-yellow-50 dark:bg-yellow-900/30 px-2 py-0.5 rounded-full">in progress</span>
+						{/if}
+					</div>
 						<p class="text-gray-600 dark:text-gray-300 mt-2 leading-relaxed">{game.excerpt}</p>
 						{#if game.technologies && game.technologies.length > 0}
 							<p class="text-gray-400 dark:text-gray-500 text-sm mt-3">

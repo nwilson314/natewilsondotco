@@ -1,7 +1,7 @@
 ---
 title: "Geometric Defense"
 excerpt: "A tower defense game built with geometric shapes. No sprites, no assets—just procedural geometry."
-date: "2025-08-03"
+date: "2026-01-19"
 tags: ["odin", "gamedev", "tower defense", "geometry", "2d"]
 featured: true
 status: "in-progress"
@@ -33,13 +33,11 @@ You can play in the browser with the link above.
 
 ## Towers
 
-| Tower   | Behavior                                |
-|---------|----------------------------------------|
-| Blaster | Single-target homing projectile         |
-| Pulse   | AOE damage ring around tower            |
-| Beam    | Piercing line that lingers briefly      |
-| Tesla   | Chain lightning jumps between 3 enemies |
-| Shard   | Long-range instant sniper shot          |
+- **Blaster** — Single-target homing projectile
+- **Pulse** — AOE damage ring around tower
+- **Beam** — Piercing line that lingers briefly
+- **Tesla** — Chain lightning jumps between 3 enemies
+- **Shard** — Long-range instant sniper shot
 
 ## Game Development Background
 

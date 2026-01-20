@@ -9,8 +9,9 @@
     ],
     "waves": [
         {"enemy_type": "basic", "count": 5, "spawn_delay": 0.8, "wave_delay": 0},
-        {"enemy_type": "basic", "count": 8, "spawn_delay": 0.6, "wave_delay": 3},
-        {"enemy_type": "basic", "count": 10, "spawn_delay": 0.5, "wave_delay": 3}
+        {"enemy_type": "fast", "count": 8, "spawn_delay": 0.6, "wave_delay": 3},
+        {"enemy_type": "tank", "count": 10, "spawn_delay": 0.5, "wave_delay": 3},
+        {"enemy_type": "elite", "count": 5, "spawn_delay": 1.0, "wave_delay": 3}
     ],
     "starting_gold": 100
 }
