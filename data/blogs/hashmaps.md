@@ -1,5 +1,5 @@
 ---
-title: "Learnings about Hashmaps"
+title: "Hashmap Collision Algorithms"
 excerpt: "Hash collision strategies and why context determines which one to use"
 date: "2026-01-12"
 tags: ["computer-science", "systems", "learning", "databases", "go"]
@@ -7,7 +7,7 @@ series: "Databases"
 series_part: 2
 readTime: "10 min read"
 ---
-# Learnings about Hashmaps
+# Hashmap Collision Algorithms
 
 Recently, I had been building out some simple datastructures from scratch in an effort to learn Go (as a part of a larger database internals deepdive). One of these datastructures was the Hashmap (or HashTable if you prefer).
 
