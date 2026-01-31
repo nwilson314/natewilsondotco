@@ -10,13 +10,13 @@
     <meta name="viewport" content="width=device-width">
 
     <style>
-        body {
-            margin: 0px;
-            overflow: hidden;
+        body { 
+            margin: 0px; 
+            overflow: hidden; 
             background-color: black;
         }
-        canvas.game_canvas {
-            border: 0px none;
+        canvas.game_canvas { 
+            border: 0px none; 
             background-color: black;
             padding-left: 0;
             padding-right: 0;
@@ -28,11 +28,7 @@
 </head>
 <body>
     <canvas class="game_canvas" id="canvas" oncontextmenu="event.preventDefault()" tabindex="-1" onmousedown="event.target.focus()" onkeydown="event.preventDefault()"></canvas>
-
-    <!-- Hidden file input for save import -->
-    <input type="file" id="saveFileInput" accept=".json" style="display:none"
-           onchange="if(this.files[0]) importSave(this.files[0])">
-
+    
     <!-- IMPORTANT: Using absolute paths to avoid relative path resolution issues -->
     <script type="text/javascript" src="/play/geometric-defense/odin.js"></script>
     <script>
@@ -67,9 +63,6 @@
             // done setting up. At that point we can run code.
             onRuntimeInitialized: () => {
                 var e = wasmExports;
-
-                // Check for pending save import before game loads
-                checkPendingImport();
 
                 // Calls any procedure marked with @init
                 e._start();
@@ -122,76 +115,9 @@
                 return document.getElementById("canvas");
             })()
         };
-
-        // ===========================================
-        // Save Export/Import for Web Persistence
-        // ===========================================
-
-        // Export save - downloads save.json from Emscripten virtual filesystem
-        function exportSave() {
-            try {
-                var data = FS.readFile('save.json', { encoding: 'utf8' });
-                var blob = new Blob([data], { type: 'application/json' });
-                var url = URL.createObjectURL(blob);
-                var a = document.createElement('a');
-                a.href = url;
-                a.download = 'geometric_defense_save.json';
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                URL.revokeObjectURL(url);
-                console.log('Save exported successfully');
-                return true;
-            } catch (e) {
-                console.log('No save file to export:', e);
-                return false;
-            }
-        }
-
-        // Import save - stores in localStorage, then reloads
-        // On next page load, onRuntimeInitialized will write it to FS
-        function importSave(file) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                try {
-                    JSON.parse(e.target.result); // Validate JSON
-                    localStorage.setItem('geometric_defense_pending_import', e.target.result);
-                    console.log('Save staged for import, reloading...');
-                    location.reload();
-                } catch (err) {
-                    console.error('Failed to import save:', err);
-                    alert('Invalid save file');
-                }
-            };
-            reader.readAsText(file);
-        }
-
-        // Trigger file picker for import
-        function triggerImport() {
-            document.getElementById('saveFileInput').click();
-        }
-
-        // Check for pending import and write to FS (called after FS is ready)
-        function checkPendingImport() {
-            var pending = localStorage.getItem('geometric_defense_pending_import');
-            if (pending) {
-                try {
-                    FS.writeFile('save.json', pending);
-                    localStorage.removeItem('geometric_defense_pending_import');
-                    console.log('Pending save imported successfully');
-                } catch (err) {
-                    console.error('Failed to write pending import:', err);
-                }
-            }
-        }
-
-        // Expose to window for Odin access
-        window.exportSave = exportSave;
-        window.importSave = importSave;
-        window.triggerImport = triggerImport;
-        window.checkPendingImport = checkPendingImport;
     </script>
 
+    <!-- Emscripten injects its javascript here -->
     <!-- IMPORTANT: Absolute path to Emscripten JS -->
     <script async type="text/javascript" src="/play/geometric-defense/index.js"></script>
 </body>
