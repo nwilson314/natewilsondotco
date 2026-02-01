@@ -80,6 +80,10 @@
 
                 function send_resize() {
                     var canvas = document.getElementById('canvas');
+                    // Resize canvas to fill the window
+                    canvas.width = window.innerWidth;
+                    canvas.height = window.innerHeight;
+                    // Tell the game about the new size
                     e.web_window_size_changed(canvas.width, canvas.height);
                 }
 
@@ -87,9 +91,7 @@
                     send_resize();
                 }, true);
 
-                // This can probably be done better: Ideally we'd feed the
-                // initial size to `main_start`. But there seems to be a
-                // race condition. `canvas` doesn't have it's correct size yet.
+                // Initial resize to fill screen
                 send_resize();
 
                 // Runs the "main loop".
