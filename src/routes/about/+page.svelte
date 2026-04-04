@@ -10,7 +10,7 @@
 
 	<section class="space-y-4 text-gray-700 dark:text-gray-300 mb-8">
 		<p>
-			Hey, I'm Nate. I'm a software engineer who leans toward the backend and data side of things. I spend most of my time building healthcare software at Prevounce Health and the rest trying to keep things running on a small farm in Ohio.
+			Hey, I'm Nate. I'm a software engineer who leans toward the backend and data side of things. I spend most of my time building healthcare software at AndHealth and the rest trying to keep things running on a small farm in Ohio.
 		</p>
 		<p>
 			I didn't start in software. I studied electrical and computer engineering at Ohio State and spent a few years as an applications engineer in semiconductors. It was a solid job on paper, but I never quite felt like I was doing the thing I actually cared about.
@@ -19,7 +19,7 @@
 			I kept drifting back to code: side projects, small web apps, and a bit of game tinkering. Eventually it was clear this wasn't just a hobby. I went back for a master's in computer science at Northeastern, shifted into software engineering, and eventually landed at a healthcare startup.
 		</p>
 		<p>
-			These days my day job is mostly backend systems, APIs, databases, and the unglamorous parts of making things reliable. It's a good place to be, but it's also the kind of role where you can quietly stagnate if you're not paying attention, so I try not to.
+			These days my day job is mostly backend systems, APIs, and databases, with a recent shift into Flutter and Firestore on the mobile side.
 		</p>
 	</section>
 
@@ -30,7 +30,7 @@
 			What I'm learning
 		</h2>
 		<p class="text-gray-700 dark:text-gray-300 mb-4">
-			Right now I'm spending most of my learning time on database internals, systems programming (with a soft spot for Odin), and figuring out how to make services behave well under load. I care less about whatever framework is trending and more about how to make real systems work and work well.
+			Right now I'm spending most of my learning time on database internals, systems programming (with a soft spot for Odin), and figuring out how to make services behave well under load. I'm more interested in how to make real systems work and work well.
 		</p>
 	</section>
 
@@ -41,7 +41,7 @@
 			Outside of work
 		</h2>
 		<p class="text-gray-700 dark:text-gray-300">
-			Life is a mix of farm chores and long training blocks. My partner and I run a small farm, which is a good reminder that not everything can be version controlled and rolled back. I've finished a couple of Ironmans and currently trying to figure out what to train for next. There's something appealing about signing up for things that take months of slow work and then demand everything in one day.
+			Life is a mix of farm chores and long training blocks. My partner and I run a small farm, which keeps things interesting. I've finished a couple of full Ironmans and a half, and I'm currently trying to figure out what to train for next. There's something appealing about signing up for things that take months of slow work and then demand everything in one day.
 		</p>
 	</section>
 

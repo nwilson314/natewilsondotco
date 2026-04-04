@@ -1,27 +1,9 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import { onMount } from 'svelte';
 
 	export let data: PageData;
-	
+
 	let { posts, projects, games } = data;
-	let currentTime = new Date();
-
-	onMount(() => {
-		const interval = setInterval(() => {
-			currentTime = new Date();
-		}, 60000); // Update every minute instead of every second
-
-		return () => clearInterval(interval);
-	});
-
-	function formatDate() {
-		return currentTime.toLocaleDateString('en-US', {
-			year: 'numeric',
-			month: 'short', 
-			day: 'numeric'
-		});
-	}
 </script>
 
 <div class="py-8 max-w-2xl">
@@ -31,13 +13,13 @@
 			Nate Wilson
 		</h1>
 		<p class="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
-			Software engineer focused on backend systems and databases. Currently at Prevounce Health building healthcare software. Based in Ohio.
+			Software engineer focused on backend systems and databases. Currently at AndHealth building healthcare software for chronic illness care. Based in Ohio.
 		</p>
 		<p class="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
 			Outside of work: small farm, endurance training, too many side projects.
 		</p>
 		<p class="text-sm text-gray-400 dark:text-gray-500">
-			Last updated {formatDate()}
+			Last updated Apr 4, 2026
 		</p>
 	</section>
 
@@ -48,13 +30,10 @@
 		</h2>
 		<ul class="space-y-2 text-gray-700 dark:text-gray-300">
 			<li class="pl-4 border-l-2 border-gray-300 dark:border-gray-600 font-serif">
-				<strong>Learning:</strong> Database Internals, Systems Programming in Go
+				<strong>Learning:</strong> Database Internals, Systems Programming in Odin
 			</li>
 			<li class="pl-4 border-l-2 border-gray-300 dark:border-gray-600 font-serif">
 				<strong>Reading:</strong> Database Internals and <a href="https://eatonphil.com/2026-ostep.html" target="_blank" rel="noopener noreferrer">Operating Systems: Three Easy Pieces</a>
-			</li>
-			<li class="pl-4 border-l-2 border-gray-300 dark:border-gray-600 font-serif">
-				<strong>Recently finished:</strong> Ironman Ohio 2025
 			</li>
 		</ul>
 	</section>
@@ -66,7 +45,7 @@
 		</h2>
 		{#if projects.length > 0}
 			<ul class="space-y-4">
-				{#each projects.slice(0, 5) as project}
+				{#each projects.filter(p => p.featured || p.status === 'in-progress').slice(0, 5) as project}
 					<li class="pl-4 border-l-2 {project.status === 'in-progress' ? 'border-blue-500 dark:border-blue-400' : 'border-gray-300 dark:border-gray-600'} group">
 						<div class="flex items-baseline justify-between mb-1">
 							<a href="/projects/{project.id}" class="text-base font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 font-sans tracking-tight no-underline">
